@@ -1,29 +1,232 @@
-<!doctype html><html lang=en-us><head><meta charset=utf-8><title>Writeup HackFest 2017</title><meta name=author content="FallCrescent"><meta name=description content="Welcome to my blog"><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=5"><link rel=icon href=https://fallcrescent.my.id/images/favicon.png type=image/x-icon><link rel=preconnect href=https://fonts.gstatic.com><link rel=stylesheet href="https://fonts.googleapis.com/css2?family=Mulish:wght@500;600;700;800;900&display=swap"><link rel=stylesheet href=https://fallcrescent.my.id/css/vendor.min.22e8d76fe11d22819ea97a70762bd28ea9e3e7eaa95c893743c7ca069aa5ed54d8e4faf39438b872bfa09dc45d95d355c629a9da1a0984bbd3e6b06542b811a6.css integrity="sha512-IujXb+EdIoGeqXpwdivSjqnj5+qpXIk3Q8fKBpql7VTY5PrzlDi4cr+gncRdldNVximp2hoJhLvT5rBlQrgRpg==" media=screen></head><body><div class=header-height-fix></div><header class=header-nav><div class=container><div class=row><div class=col-12><nav class="navbar navbar-expand-lg navbar-light p-0"><a class="navbar-brand font-weight-bold mr-0" href=https://fallcrescent.my.id><img loading=lazy src=https://fallcrescent.my.id/images/FallCrescent.png alt="Fallcrescent - Blog" height=35px></a>
-<button class="search-toggle d-inline-block d-lg-none ml-auto mr-3" data-toggle=search aria-label="Search Toggle">
-<i class="las la-search"></i></button>
-<button class=navbar-toggler type=button data-toggle=collapse data-target=#navHeader aria-controls=navHeader aria-expanded=false aria-label="Toggle navigation">
-<i class="d-inline lab la-buromobelexperte"></i><i class="d-none las la-times"></i></button><div class="collapse navbar-collapse" id=navHeader><ul class="navbar-nav mx-auto"><li class=nav-item><a class=nav-link href=https://fallcrescent.my.id/>Home</a></li><li class=nav-item><a class=nav-link href=https://fallcrescent.my.id/about>About</a></li><li class=nav-item><a class=nav-link href=https://fallcrescent.my.id/contact>Contact me</a></li><li class="nav-item dropdown"><a class="nav-link dropdown-toggle d-inline-block" href=# role=button data-toggle=dropdown aria-expanded=false>Pages</a><ul class=dropdown-menu><li><a class=dropdown-item href=https://fallcrescent.my.id/author/>Author</a></li><li><a class=dropdown-item href=https://fallcrescent.my.id/tags/>Tags</a></li><li><a class=dropdown-item href=https://fallcrescent.my.id/categories/>Category</a></li></ul></li></ul><div class="navbar-right d-none d-lg-inline-block"><ul class="social-links list-unstyled list-inline"><li class="list-inline-item ml-4 d-none d-lg-inline-block"><button class=search-toggle data-toggle=search aria-label="Search Toggle">
-<i class="las la-search"></i></button></li></ul></div></div></nav></div></div></div></header><div class=search-block><div data-toggle=search-close><i class="las la-times text-primary"></i></div><form action=/search><input id=search-query name=s type=search placeholder="Type words & hit enter" class=text-center aria-label=search-query></form></div><section class=section-sm><div class=container><div class="row justify-content-center"><div class=col-lg-10><div class="text-center mb-5"><h3 class="h2 mb-4 post-title">Writeup HackFest 2017</h3><ul class="card-meta list-inline"><li class=list-inline-item><a href=#! class=card-meta-author><a href=https://fallcrescent.my.id/author/kizbudin/ class=card-meta-author><img loading=lazy src=https://fallcrescent.my.id/images/author/author-3.png alt="M. Kizbudin">
-<span>M. Kizbudin</span></a></a></li><li class=list-inline-item>|</li><li class=list-inline-item><span>11 October 2018</span></li></ul></div><div class="mb-5 text-center"><img loading=lazy class="img-fluid rounded" src=https://fallcrescent.my.id/images/post/hf-ccug.png alt="Image not Found"></div><div class=content><h2 id=web-hacking>Web Hacking</h2><h3 id=1-mr-robot>1. MR Robot</h3><p>Deskripsi Soal :
-Catch My Robot<br>Diberikan tampilan awal sebagai berikut<br><img src=/images/post/wu-hf2017/robot/1.JPG alt="deskripsi soal"><br>Dari soal kita sudah bisa mengetahui kalau pada website ini mempunyai file robots.txt sehingga kita bisa membukanya hanya dengan menambahkan /robots.txt pada akhir URL, maka di dapat tampilan berikut<br><img src=/images/post/wu-hf2017/robot/2.JPG alt=petunjuk><br>sesuai dengan petunjuk yang diberikan maka kita hanya menambahkan /this_is_the_flag.txt pada akhir URL dan didapatkan flag<br><img src=/images/post/wu-hf2017/robot/flag-robot.JPG alt=flag-robot><br><strong>Flag: HackFest{RobotsTXT_is_NOT_Secure_Anymore!}</strong></p><h3 id=2-header-information>2. Header Information</h3><p>Untuk mendapatkan flag ini hanya membuka header yang di berikan oleh server, kita dapat melihatnya dengan bantuan browser serta menekan CTRL+SHIFT+I dan klik network atau dapat menggunakan tool Burpsuite<br><img src=/images/post/wu-hf2017/header-info/header.JPG alt=header><br><strong>Flag: HackFest{Informasi_Header_Pada_Web}</strong>\</p><h3 id=3-google-flag>3. Google Flag</h3><p>Deskripsi Soal: Hanya google bot yang dapat mengakses flag.<br><img src=/images/post/wu-hf2017/google-bot/1.JPG alt=google><br>kita dapat mengubah user agent yang akan kita kirimkan ke server dengan menggunakan extension user agent switcher atau dengan menggunakan burpsuite.<br><img src=/images/post/wu-hf2017/google-bot/2.jpg alt=ua><br>Jika kita menggunakan extension user agent switcher, maka pilih google bot, dan di dapatkan flag<br><img src=/images/post/wu-hf2017/google-bot/3.jpg alt=flag><br><strong>Flag: HackFest{Haloo_Google!}</strong></p><h3 id=4-belanja-akhir-tahun>4. Belanja Akhir tahun</h3><p>Tampilan awal dari halaman sebagai berikut, dan hanya memiliki uang Rp10 saja. Untuk itu kita dapat memanipulasi dari source secara langsung, Terlihat sebuah inputan hidden yang dapat diduga sebagai value pengiriman uang ke server<br><img src=/images/post/wu-hf2017/belanja/1.jpg alt=1><br>Kita dapat menggantikan lebih dari kebutuhan yang diperlukan, misalkan dengan angka 90000, dan kirim kembali data tersebut.<br><img src=/images/post/wu-hf2017/belanja/2.jpg alt=2><br>Maka di dapatkan flag<br><strong>Flag: HackFest{Belanja_Berhasil_Dengan_Manipulasi_Inspeksi_Elemen}</strong></p><h2 id=digital-forensics>Digital Forensics</h2><h3 id=security-wargame>Security Wargame</h3><p>Diberikan file berupa gambar, nah karena ini adalah soal digital Forensics maka kita di wajibkan unttuk mencari informasi dari sebuah gambar tersebut.
-<img src=/images/post/wu-hf2017/sec-wargame/ctf_security_wargame.jpg alt="sec wargame">
-Pada Linux Parrot terdapat command-command yang dapat digunakan untuk mencari informasi pada sebuah file gambar diantaranya adalah: binwalk, foremost dan exiftool (install). Dengan mencoba binwalk akan terlihat ada yang mencurigakan yaitu terdapat file zip yang disembunyikan pada sebuah gambar.\</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>fallcrescent@ccug Downloads<span style=color:#f92672>]</span>$ binwalk ctf_security_wargame.jpg 
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <title>Writeup HackFest 2017</title>
+
+  <meta name="author" content="FallCrescent">
+  <meta name="description" content="  Welcome to my blog  ">
+
+  <!-- mobile responsive meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+
+  <!-- Favicon -->
+  <link rel="icon" href="https://fallcrescent.my.id/images/favicon.png" type="image/x-icon">
+
+  <!-- CSS Plugins -->
+  
+<link rel="preconnect" href="https://fonts.gstatic.com">
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mulish:wght@500;600;700;800;900&amp;display=swap">
+
+
+
+
+<link rel="stylesheet" href="https://fallcrescent.my.id/css/vendor.min.f38e7c7e6ab34c94774fb608f1bb6b5912854002ca41fa9c63fd334fcddbd97e26be4783c0f6fd40b8fc78776c7169352bbc43ccfa6f56de22009e059d7401e1.css" integrity="sha512-8458fmqzTJR3T7YI8btrWRKFQALKQfqcY/0zT83b2X4mvkeDwPb9QLj8eHdscWk1K7xDzPpvVt4iAJ4FnXQB4Q==" media="screen">
+
+</head>
+
+<body>
+  
+  <div class="header-height-fix"></div>
+<header class="header-nav">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <nav class="navbar navbar-expand-lg navbar-light p-0">
+          <a class="navbar-brand font-weight-bold mr-0" href="https://fallcrescent.my.id">
+            
+            <img loading="lazy" src="https://fallcrescent.my.id/images/FallCrescent.png" alt="Fallcrescent - Blog" height="35px">
+            
+          </a>
+
+          
+          <button class="search-toggle d-inline-block d-lg-none ml-auto mr-3" data-toggle="search" aria-label="Search Toggle">
+            <i class="las la-search"></i>
+          </button>
+          
+
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navHeader" aria-controls="navHeader" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="d-inline lab la-buromobelexperte"></i>
+            <i class="d-none las la-times"></i>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navHeader">
+            <ul class="navbar-nav mx-auto">
+
+              
+              
+              
+              
+              
+              <li class="nav-item ">
+                <a class="nav-link" href="https://fallcrescent.my.id/">Home</a>
+              </li>
+              
+              
+              
+              
+              
+              <li class="nav-item ">
+                <a class="nav-link" href="https://fallcrescent.my.id/about">About</a>
+              </li>
+              
+              
+              
+              
+              
+              <li class="nav-item ">
+                <a class="nav-link" href="https://fallcrescent.my.id/contact">Contact me</a>
+              </li>
+              
+              
+              
+              
+              
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle d-inline-block " href="#" role="button" data-toggle="dropdown" aria-expanded="false">Pages</a>
+                <ul class="dropdown-menu">
+                  
+                  <li><a class="dropdown-item " href="https://fallcrescent.my.id/author/">Author</a></li>
+                  
+                  <li><a class="dropdown-item " href="https://fallcrescent.my.id/tags/">Tags</a></li>
+                  
+                  <li><a class="dropdown-item " href="https://fallcrescent.my.id/categories/">Category</a></li>
+                  
+                </ul>
+              </li>
+              
+              
+            </ul>
+            
+            
+            <div class="navbar-right d-none d-lg-inline-block">
+              <ul class="social-links list-unstyled list-inline">
+                <li class="list-inline-item ml-4 d-none d-lg-inline-block">
+                  <button class="search-toggle" data-toggle="search" aria-label="Search Toggle">
+                    <i class="las la-search"></i>
+                  </button>
+                </li>
+              </ul>
+            </div>
+            
+          </div>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+<div class="search-block">
+  <div data-toggle="search-close">
+    <i class="las la-times text-primary"></i>
+  </div>
+  <form action="/search">
+    <input id="search-query" name="s" type="search" placeholder="Type words &amp; hit enter" class="text-center" aria-label="search-query">
+  </form>
+</div>
+
+  
+  
+
+
+
+
+<section class="section-sm">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-10">
+        <div class="text-center mb-5">
+          <h3 class="h2 mb-4 post-title">Writeup HackFest 2017</h3>
+          <ul class="card-meta list-inline">
+            <li class="list-inline-item">
+              <a href="#!" class="card-meta-author">
+                
+                <a href="https://fallcrescent.my.id/author/kizbudin/" class="card-meta-author">
+                  <img loading="lazy" src="https://fallcrescent.my.id/images/author/author-3.png" alt="M. Kizbudin">
+                  <span>M. Kizbudin</span>
+                </a>
+                
+              </a>
+            </li>
+            <li class="list-inline-item">|</li>
+            <li class="list-inline-item">
+              <span>11 October 2018</span>
+            </li>
+          </ul>
+        </div>
+
+        
+        <div class="mb-5 text-center">
+          <img loading="lazy" class="img-fluid rounded" src="https://fallcrescent.my.id/images/post/hf-ccug.png" alt="Image not Found">
+        </div>
+        
+
+        <div class="content">
+          <h2 id="web-hacking">Web Hacking</h2>
+<h3 id="1-mr-robot">1. MR Robot</h3>
+<p>Deskripsi Soal :
+Catch My Robot<br>
+Diberikan tampilan awal sebagai berikut<br>
+<img src="/images/post/wu-hf2017/robot/1.JPG" alt="deskripsi soal"><br>
+Dari soal kita sudah bisa mengetahui kalau pada website ini mempunyai file robots.txt sehingga kita bisa membukanya hanya dengan menambahkan /robots.txt pada akhir URL, maka di dapat tampilan berikut<br>
+<img src="/images/post/wu-hf2017/robot/2.JPG" alt="petunjuk"><br>
+sesuai dengan petunjuk yang diberikan maka kita hanya menambahkan /this_is_the_flag.txt pada akhir URL dan didapatkan flag<br>
+<img src="/images/post/wu-hf2017/robot/flag-robot.JPG" alt="flag-robot"><br>
+<strong>Flag: HackFest{RobotsTXT_is_NOT_Secure_Anymore!}</strong></p>
+<h3 id="2-header-information">2. Header Information</h3>
+<p>Untuk mendapatkan flag ini hanya membuka header yang di berikan oleh server, kita dapat melihatnya dengan bantuan browser serta menekan CTRL+SHIFT+I dan klik network atau dapat menggunakan tool Burpsuite<br>
+<img src="/images/post/wu-hf2017/header-info/header.JPG" alt="header"><br>
+<strong>Flag: HackFest{Informasi_Header_Pada_Web}</strong>\</p>
+<h3 id="3-google-flag">3. Google Flag</h3>
+<p>Deskripsi Soal: Hanya google bot yang dapat mengakses flag.<br>
+<img src="/images/post/wu-hf2017/google-bot/1.JPG" alt="google"><br>
+kita dapat mengubah user agent yang akan kita kirimkan ke server dengan menggunakan extension user agent switcher atau dengan menggunakan burpsuite.<br>
+<img src="/images/post/wu-hf2017/google-bot/2.jpg" alt="ua"><br>
+Jika kita menggunakan extension user agent switcher, maka pilih google bot, dan di dapatkan flag<br>
+<img src="/images/post/wu-hf2017/google-bot/3.jpg" alt="flag"><br>
+<strong>Flag: HackFest{Haloo_Google!}</strong></p>
+<h3 id="4-belanja-akhir-tahun">4. Belanja Akhir tahun</h3>
+<p>Tampilan awal dari halaman sebagai berikut, dan hanya memiliki uang Rp10 saja. Untuk itu kita dapat memanipulasi dari source secara langsung, Terlihat sebuah inputan hidden yang dapat diduga sebagai value pengiriman uang ke server<br>
+<img src="/images/post/wu-hf2017/belanja/1.jpg" alt="1"><br>
+Kita dapat menggantikan lebih dari kebutuhan yang diperlukan, misalkan dengan angka 90000, dan kirim kembali data tersebut.<br>
+<img src="/images/post/wu-hf2017/belanja/2.jpg" alt="2"><br>
+Maka di dapatkan flag<br>
+<strong>Flag: HackFest{Belanja_Berhasil_Dengan_Manipulasi_Inspeksi_Elemen}</strong></p>
+<h2 id="digital-forensics">Digital Forensics</h2>
+<h3 id="security-wargame">Security Wargame</h3>
+<p>Diberikan file berupa gambar, nah karena ini adalah soal digital Forensics maka kita di wajibkan unttuk mencari informasi dari sebuah gambar tersebut.
+<img src="/images/post/wu-hf2017/sec-wargame/ctf_security_wargame.jpg" alt="sec wargame">
+Pada Linux Parrot terdapat command-command yang dapat digunakan untuk mencari informasi pada sebuah file gambar diantaranya adalah: binwalk, foremost dan exiftool (install). Dengan mencoba binwalk akan terlihat ada yang mencurigakan yaitu terdapat file zip yang disembunyikan pada sebuah gambar.\</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">fallcrescent@ccug Downloads<span style="color:#f92672">]</span>$ binwalk ctf_security_wargame.jpg 
 
 DECIMAL       HEXADECIMAL     DESCRIPTION
 --------------------------------------------------------------------------------
-<span style=color:#ae81ff>0</span>             0x0             JPEG image data, EXIF standard
-<span style=color:#ae81ff>12</span>            0xC             TIFF image data, little-endian offset of first image directory: <span style=color:#ae81ff>8</span>
-<span style=color:#ae81ff>270337</span>        0x42001         Zip archive data, encrypted at least v2.0 to extract, compressed size: 126, uncompressed size: 148, name: flag.txt
-<span style=color:#ae81ff>270607</span>        0x4210F         End of Zip archive, footer length: <span style=color:#ae81ff>22</span>
-</code></pre></div><p>Gunakan Foremost untuk mengeluarkan zip yang ada pada gambar tersebut, ketika ingin mengextrack file zip diperlukan password.. pertanyaanya adalah apa dan dimana passwordnya berada? Gunakan exiftool untuk melihat detail informasi pada gambar</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=color:#f92672>[</span>fallcrescent@ccug Security wargame<span style=color:#f92672>]</span>$ exiftool ctf_security_wargam1e.jpg 
+<span style="color:#ae81ff">0</span>             0x0             JPEG image data, EXIF standard
+<span style="color:#ae81ff">12</span>            0xC             TIFF image data, little-endian offset of first image directory: <span style="color:#ae81ff">8</span>
+<span style="color:#ae81ff">270337</span>        0x42001         Zip archive data, encrypted at least v2.0 to extract, compressed size: 126, uncompressed size: 148, name: flag.txt
+<span style="color:#ae81ff">270607</span>        0x4210F         End of Zip archive, footer length: <span style="color:#ae81ff">22</span>
+</code></pre></div><p>Gunakan Foremost untuk mengeluarkan zip yang ada pada gambar tersebut, ketika ingin mengextrack file zip diperlukan password.. pertanyaanya adalah apa dan dimana passwordnya berada? Gunakan exiftool untuk melihat detail informasi pada gambar</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#f92672">[</span>fallcrescent@ccug Security wargame<span style="color:#f92672">]</span>$ exiftool ctf_security_wargam1e.jpg 
 ExifTool Version Number         : 12.25
 File Name                       : ctf_security_wargam1e.jpg
-File Size                       : <span style=color:#ae81ff>271</span> KiB
+File Size                       : <span style="color:#ae81ff">271</span> KiB
 File Modification Date/Time     : 2018:01:18 09:37:28+07:00
 File Access Date/Time           : 2018:10:18 13:47:39+07:00
 File Inode Change Date/Time     : 2019:11:07 10:14:25+07:00
 Image Description               : Capture The Flag : Security Wargame
-Orientation                     : Horizontal <span style=color:#f92672>(</span>normal<span style=color:#f92672>)</span>
+Orientation                     : Horizontal <span style="color:#f92672">(</span>normal<span style="color:#f92672">)</span>
 Software                        : Google
 Artist                          : HackFest
 XP Title                        : Capture The Flag : Security Wargame
@@ -32,8 +235,303 @@ XP Author                       : HackFest
 XP Keywords                     : HackFest Prelim
 XP Subject                      : Forensic : File Carving
 </code></pre></div><p>Extract file ZIP menggunakan Password yang di dapat dari exiftool kemudian di dapatkan Flagnya
-<strong>Flag : HackFest{file_carving_adalah_salah_satu_topik_dalam_digital_forensic}</strong></p><h3 id=broken-zip>Broken ZIP</h3><p>Diberikan sebuah file zip yang berisi file flag. Terlihat bahwa file tersebut sehat – sehat saja namun sebenarnya filenya sakit (rusak) karena tidak dapat dibuka ataupun di extract. Untuk mengetahui dimana rusaknya biasanya terdapat pada bagian header filenya. Buka dengan hexeditor atau editor hex lainnya untuk melihat dimana kerusakannya.<br><img src=/images/post/wu-hf2017/broken-zip/brokem.JPG alt=broken><br>Terlihat bahwa didalam zip tersebut terdapat file flag.png. Pada hex yang terseleksi(berwarna hijau) seharusnya berisi panjang dari nama file yang ada pada zip tersebut (flag.png → len = 8). Maka pada bit tersebut harus di ubah menjadi hex panjang file yang sebenarnya yaitu 08. Kemudian extract zipnya dan dapatkan flag.png nya.\</p><p>Belum selesai sampai disitu ternyata flagnya berupa QR Code. Buka Web ini untuk mendecode online QR Code, atau bisa menggunakan QRCode Reader yang ada pada handphone anda.\</p><p><strong>Flag : HackFest{congratulations_you_have_repaired_this_broken_ZIP}</strong></p></div></div></div><div class=single-post-meta><div class="row justify-content-center"><div class="col-lg-5 col-md-6 text-center text-md-left"><ul class="post-meta-tags list-unstyled list-inline"><li class=list-inline-item><a href=https://fallcrescent.my.id/tags/ctf>CTF</a></li></ul></div><div class="col-lg-5 col-md-6 text-center text-md-right mt-4 mt-md-0"><ul class="social-links has-bg-color list-unstyled list-inline" style=line-height:0><li class=list-inline-item><a class="resp-sharing-button__link d-block" href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2ffallcrescent.my.id%2fblog%2fwriteup-hf-2017%2f" target=_blank rel=noopener aria-label><div class="resp-sharing-button resp-sharing-button--facebook resp-sharing-button--small"><div aria-hidden=true class="resp-sharing-button__icon resp-sharing-button__icon--solid"><i class="lab la-facebook-f text-dark"></i></div></div></a></li><li class=list-inline-item><a class="resp-sharing-button__link d-block" href="https://twitter.com/intent/tweet/?text=Writeup%20HackFest%202017&url=https%3a%2f%2ffallcrescent.my.id%2fblog%2fwriteup-hf-2017%2f" target=_blank rel=noopener aria-label><div class="resp-sharing-button resp-sharing-button--twitter resp-sharing-button--small"><div aria-hidden=true class="resp-sharing-button__icon resp-sharing-button__icon--solid"><i class="lab la-twitter text-dark"></i></div></div></a></li><li class=list-inline-item><a class="resp-sharing-button__link d-block" href="https://plus.google.com/share?url=https%3a%2f%2ffallcrescent.my.id%2fblog%2fwriteup-hf-2017%2f" target=_blank rel=noopener aria-label><div class="resp-sharing-button resp-sharing-button--google resp-sharing-button--small"><div aria-hidden=true class="resp-sharing-button__icon resp-sharing-button__icon--solid"><i class="lab la-google-plus-g text-dark"></i></div></div></a></li><li class=list-inline-item><a class="resp-sharing-button__link d-block" href="mailto:?subject=Writeup%20HackFest%202017&body=https%3a%2f%2ffallcrescent.my.id%2fblog%2fwriteup-hf-2017%2f" target=_self rel=noopener aria-label><div class="resp-sharing-button resp-sharing-button--email resp-sharing-button--small"><div aria-hidden=true class="resp-sharing-button__icon resp-sharing-button__icon--solid"><i class="las la-envelope text-dark"></i></div></div></a></li><li class=list-inline-item><a class="resp-sharing-button__link d-block" href="whatsapp://send?text=Writeup%20HackFest%202017%20https%3a%2f%2ffallcrescent.my.id%2fblog%2fwriteup-hf-2017%2f" target=_blank rel=noopener aria-label><div class="resp-sharing-button resp-sharing-button--whatsapp resp-sharing-button--small"><div aria-hidden=true class="resp-sharing-button__icon resp-sharing-button__icon--solid"><i class="lab la-whatsapp text-dark"></i></div></div></a></li></ul></div></div></div><div class=single-post-author><div class="row justify-content-center"><div class=col-lg-10><div class="media d-block d-sm-flex text-center text-sm-left"><a href=https://fallcrescent.my.id/author/kizbudin/><img loading=lazy class="img-fluid rounded-circle mr-0 mr-sm-4 mb-4" src=https://fallcrescent.my.id/images/author/author-3.png alt="M. Kizbudin"></a><div class=media-body><p class="font-primary mb-1">Written By</p><h4><a href=https://fallcrescent.my.id/author/kizbudin/ class="text-dark font-weight-700">M. Kizbudin</a></h4><p class=font-primary>Hello i am M. Kizbudin. Computer science student, i blog about cyber security, ctf writeup , web development , and more about tech.</p><ul class="social-links list-unstyled list-inline ml-0 ml-sm-n2"><li class=list-inline-item><a href=https://facebook.com/m.kizbudin1><i class="lab la-facebook-f"></i></a></li><li class=list-inline-item><a href=https://twitter.com/fallcrescent151><i class="lab la-twitter"></i></a></li><li class=list-inline-item><a href=https://linkedin.com/in/kizbudin><i class="lab la-linkedin-in"></i></a></li></ul></div></div></div></div></div><div class=single-post-similer><div class="row justify-content-center"><div class=col-lg-10><div class="row mt-3"><div class=col-12><h3 class="text-dark font-weight-800 mb-4 pb-2">You May Also Like</h3></div><div class=col-md-6><article class="card post-card"><a href=https://fallcrescent.my.id/blog/deploy-hugo-gh-act/><img loading=lazy class="w-100 rounded" src=https://fallcrescent.my.id/images/post/hugo+gh.png alt="Deploy Hugo ke Github dengan Menggunakan Github Action"></a><div class=card-body><ul class="card-meta list-inline mb-2"><li class="list-inline-item mb-2"><a href=https://fallcrescent.my.id/author/kizbudin/ class=card-meta-author><img loading=lazy src=https://fallcrescent.my.id/images/author/author-3.png alt="M. Kizbudin">
-<span>M. Kizbudin</span></a></li><li class="list-inline-item mb-2"><span>14 Aug, 2021</span></li><li class="list-inline-item mb-2"><ul class="card-meta-tag list-inline"><li class=list-inline-item><a href=https://fallcrescent.my.idtags/hugo>Hugo</a></li><li class=list-inline-item><a href=https://fallcrescent.my.idtags/github-action>Github Action</a></li></ul></li></ul><h3 class=mb-3><a class=post-title href=https://fallcrescent.my.id/blog/deploy-hugo-gh-act/>Deploy Hugo ke Github dengan Menggunakan Github Action</a></h3><p>Apa itu Github Action? Sederhananya Github Actions adalah alat otomasi (CI/CD) yang hadir di Github, Alat ini sangat membantu kita untuk membuat …</p></div></article></div><div class=col-md-6><article class="card post-card"><a href=https://fallcrescent.my.id/blog/write-up-disko-ctf/><img loading=lazy class="w-100 rounded" src=https://fallcrescent.my.id/images/post/disko-ctf/logo-kominfo.png alt="Write up Disko CTF"></a><div class=card-body><ul class="card-meta list-inline mb-2"><li class="list-inline-item mb-2"><a href=https://fallcrescent.my.id/author/kizbudin/ class=card-meta-author><img loading=lazy src=https://fallcrescent.my.id/images/author/author-3.png alt="M. Kizbudin">
-<span>M. Kizbudin</span></a></li><li class="list-inline-item mb-2"><span>12 Aug, 2021</span></li><li class="list-inline-item mb-2"><ul class="card-meta-tag list-inline"><li class=list-inline-item><a href=https://fallcrescent.my.idtags/ctf>CTF</a></li></ul></li></ul><h3 class=mb-3><a class=post-title href=https://fallcrescent.my.id/blog/write-up-disko-ctf/>Write up Disko CTF</a></h3><p>Misc - Bonus Untuk soal kategori ini tidak perlu di jelaskan sudah ada jawabanya semua flag nya yaitu
+<strong>Flag : HackFest{file_carving_adalah_salah_satu_topik_dalam_digital_forensic}</strong></p>
+<h3 id="broken-zip">Broken ZIP</h3>
+<p>Diberikan sebuah file zip yang berisi file flag. Terlihat bahwa file tersebut sehat – sehat saja namun sebenarnya filenya sakit (rusak) karena tidak dapat dibuka ataupun di extract. Untuk mengetahui dimana rusaknya biasanya terdapat pada bagian header filenya. Buka dengan hexeditor atau editor hex lainnya untuk melihat dimana kerusakannya.<br>
+<img src="/images/post/wu-hf2017/broken-zip/brokem.JPG" alt="broken"><br>
+Terlihat bahwa didalam zip tersebut terdapat file flag.png. Pada hex yang terseleksi(berwarna hijau) seharusnya berisi panjang dari nama file yang ada pada zip tersebut (flag.png → len = 8). Maka pada bit tersebut harus di ubah menjadi hex panjang file yang sebenarnya yaitu 08. Kemudian extract zipnya dan dapatkan flag.png nya.\</p>
+<p>Belum selesai sampai disitu ternyata flagnya berupa QR Code. Buka Web ini untuk mendecode online QR Code, atau bisa menggunakan QRCode Reader yang ada pada handphone anda.\</p>
+<p><strong>Flag : HackFest{congratulations_you_have_repaired_this_broken_ZIP}</strong></p>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="single-post-meta">
+      <div class="row justify-content-center">
+        <div class="col-lg-5 col-md-6 text-center text-md-left">
+          <ul class="post-meta-tags list-unstyled list-inline">
+            
+            <li class="list-inline-item"><a href="https://fallcrescent.my.id/tags/ctf">CTF</a></li>
+            
+          </ul>
+        </div>
+        <div class="col-lg-5 col-md-6 text-center text-md-right mt-4 mt-md-0">
+<ul class="social-links has-bg-color list-unstyled list-inline" style="line-height:0">
+  <li class="list-inline-item">
+    
+    <a class="resp-sharing-button__link d-block" href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2ffallcrescent.my.id%2fblog%2fwriteup-hf-2017%2f" target="_blank"
+      rel="noopener" aria-label="">
+      <div class="resp-sharing-button resp-sharing-button--facebook resp-sharing-button--small">
+        <div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+          <i class="lab la-facebook-f text-dark"></i>
+        </div>
+      </div>
+    </a>
+  </li>
+
+  <li class="list-inline-item">
+    
+    <a class="resp-sharing-button__link d-block" href="https://twitter.com/intent/tweet/?text=Writeup%20HackFest%202017&amp;url=https%3a%2f%2ffallcrescent.my.id%2fblog%2fwriteup-hf-2017%2f"
+      target="_blank" rel="noopener" aria-label="">
+      <div class="resp-sharing-button resp-sharing-button--twitter resp-sharing-button--small">
+        <div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+          <i class="lab la-twitter text-dark"></i>
+        </div>
+      </div>
+    </a>
+  </li>
+
+  <li class="list-inline-item">
+    
+    <a class="resp-sharing-button__link d-block" href="https://plus.google.com/share?url=https%3a%2f%2ffallcrescent.my.id%2fblog%2fwriteup-hf-2017%2f" target="_blank"
+      rel="noopener" aria-label="">
+      <div class="resp-sharing-button resp-sharing-button--google resp-sharing-button--small">
+        <div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+          <i class="lab la-google-plus-g text-dark"></i>
+        </div>
+      </div>
+    </a>
+  </li>
+
+  <li class="list-inline-item">
+    
+    <a class="resp-sharing-button__link d-block" href="mailto:?subject=Writeup%20HackFest%202017&amp;body=https%3a%2f%2ffallcrescent.my.id%2fblog%2fwriteup-hf-2017%2f" target="_self"
+      rel="noopener" aria-label="">
+      <div class="resp-sharing-button resp-sharing-button--email resp-sharing-button--small">
+        <div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+          <i class="las la-envelope text-dark"></i>
+        </div>
+      </div>
+    </a>
+  </li>
+
+  <li class="list-inline-item">
+    
+    <a class="resp-sharing-button__link d-block" href="whatsapp://send?text=Writeup%20HackFest%202017%20https%3a%2f%2ffallcrescent.my.id%2fblog%2fwriteup-hf-2017%2f" target="_blank"
+      rel="noopener" aria-label="">
+      <div class="resp-sharing-button resp-sharing-button--whatsapp resp-sharing-button--small">
+        <div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+          <i class="lab la-whatsapp text-dark"></i>
+        </div>
+      </div>
+    </a>
+  </li>
+
+</ul></div>
+      </div>
+    </div>
+
+    <div class="single-post-author">
+      <div class="row justify-content-center">
+        <div class="col-lg-10">
+          <div class="media d-block d-sm-flex text-center text-sm-left">
+            
+            <a href="https://fallcrescent.my.id/author/kizbudin/"><img loading="lazy" class="img-fluid rounded-circle mr-0 mr-sm-4 mb-4" src="https://fallcrescent.my.id/images/author/author-3.png" alt="M. Kizbudin"></a>
+            <div class="media-body">
+              <p class="font-primary mb-1">Written By</p>
+              <h4><a href="https://fallcrescent.my.id/author/kizbudin/" class="text-dark font-weight-700">M. Kizbudin</a></h4>
+              <p class="font-primary">Hello i am M. Kizbudin. Computer science student, i blog about cyber security, ctf writeup , web development , and more about tech.</p>
+              <ul class="social-links list-unstyled list-inline ml-0 ml-sm-n2">
+                
+                <li class="list-inline-item"><a href="https://facebook.com/m.kizbudin1">
+                    <i class="lab la-facebook-f"></i>
+                  </a></li>
+                
+                <li class="list-inline-item"><a href="https://twitter.com/fallcrescent151">
+                    <i class="lab la-twitter"></i>
+                  </a></li>
+                
+                <li class="list-inline-item"><a href="https://linkedin.com/in/kizbudin">
+                    <i class="lab la-linkedin-in"></i>
+                  </a></li>
+                
+              </ul>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="single-post-similer">
+      <div class="row justify-content-center">
+        <div class="col-lg-10">
+          <div class="row mt-3">
+            <div class="col-12">
+              <h3 class="text-dark font-weight-800 mb-4 pb-2">You May Also Like</h3>
+            </div>
+            
+              
+            <div class="col-md-6">
+              <article class="card post-card">
+  
+  <a href="https://fallcrescent.my.id/blog/write-up-disko-ctf/">
+    <img loading="lazy" class="w-100 rounded" src="https://fallcrescent.my.id/images/post/disko-ctf/logo-kominfo.png" alt="Write up Disko CTF">
+  </a>
+  
+  <div class="card-body">
+    <ul class="card-meta list-inline mb-2">
+      <li class="list-inline-item mb-2">
+        
+        <a href="https://fallcrescent.my.id/author/kizbudin/" class="card-meta-author">
+          
+          <img loading="lazy" src="https://fallcrescent.my.id/images/author/author-3.png" alt="M. Kizbudin">
+          
+          <span>M. Kizbudin</span>
+        </a>
+        
+      </li>
+      <li class="list-inline-item mb-2">
+        <span>12 Aug, 2021</span>
+      </li>
+      <li class="list-inline-item mb-2">
+        <ul class="card-meta-tag list-inline">
+          
+          <li class="list-inline-item"><a href="https://fallcrescent.my.idtags/ctf">CTF</a></li>
+          
+        </ul>
+      </li>
+    </ul>
+    <h3 class="mb-3">
+      <a class="post-title" href="https://fallcrescent.my.id/blog/write-up-disko-ctf/">Write up Disko CTF</a>
+    </h3>
+    <p>Misc - Bonus Untuk soal kategori ini tidak perlu di jelaskan sudah ada jawabanya semua flag nya yaitu
 Bonus 1 : DiskoCTF{reborn_playing}
-Bonus 2 : …</p></div></article></div></div></div></div></div></div></section><footer class=section-sm><div class=container><div class="row justify-content-center align-items-center"><div class=col-lg-5></div><div class="col-lg-12 text-center mt-5"><ul class="list-inline footer-menu mb-4"><li class="list-inline-item mx-3"><a href=https://fallcrescent.my.id/about/>About</a></li><li class="list-inline-item mx-3"><a href=https://fallcrescent.my.id/author/>Authors</a></li></ul><ul class="social-links icon-box list-unstyled list-inline font-weight-500 mb-3"><li class="list-inline-item text-center"><a href=https://www.facebook.com/m.kizbudin1 aria-label=social-icon><i class="lab lab la-facebook-f"></i></a></li><li class="list-inline-item text-center"><a href=https://www.twitter.com/fallcrescent151 aria-label=social-icon><i class="lab lab la-twitter"></i></a></li><li class="list-inline-item text-center"><a href=https://www.instagram.com/ aria-label=social-icon><i class="lab lab la-instagram"></i></a></li><li class="list-inline-item text-center"><a href=https://www.linkedin.com/ aria-label=social-icon><i class="lab lab la-linkedin-in"></i></a></li></ul><p class="mb-0 font-weight-500 copyright-text content">Designed By <a href=https://gethugothemes.com/>Gethugothemes</a> & Developed by <a href=https://fallcrescent.my.id>M. Kizbudin</a></p></div></div></div></footer><script data-turbolinks-suppress-warning src=/js/vendor.min.145a21dc1d3b6180ba4053b597f77d01206a5207dbc280de83d4151958109b94fad45e42ce423c4c4cf0cef270a67279b4db5d19f05e3eee33b3838de0028318.js integrity="sha512-FFoh3B07YYC6QFO1l/d9ASBqUgfbwoDeg9QVGVgQm5T61F5CzkI8TEzwzvJwpnJ5tNtdGfBePu4zs4ON4AKDGA=="></script></body></html>
+Bonus 2 : …</p>
+
+    
+  </div>
+</article>
+            </div>
+            
+            <div class="col-md-6">
+              <article class="card post-card">
+  
+  <a href="https://fallcrescent.my.id/blog/write-up-reduce-ctf/">
+    <img loading="lazy" class="w-100 rounded" src="https://fallcrescent.my.id/images/post/reduce-ctf/reduce-logo.png" alt="Write up Reduce CTF">
+  </a>
+  
+  <div class="card-body">
+    <ul class="card-meta list-inline mb-2">
+      <li class="list-inline-item mb-2">
+        
+        <a href="https://fallcrescent.my.id/author/kizbudin/" class="card-meta-author">
+          
+          <img loading="lazy" src="https://fallcrescent.my.id/images/author/author-3.png" alt="M. Kizbudin">
+          
+          <span>M. Kizbudin</span>
+        </a>
+        
+      </li>
+      <li class="list-inline-item mb-2">
+        <span>12 Aug, 2021</span>
+      </li>
+      <li class="list-inline-item mb-2">
+        <ul class="card-meta-tag list-inline">
+          
+          <li class="list-inline-item"><a href="https://fallcrescent.my.idtags/ctf">CTF</a></li>
+          
+        </ul>
+      </li>
+    </ul>
+    <h3 class="mb-3">
+      <a class="post-title" href="https://fallcrescent.my.id/blog/write-up-reduce-ctf/">Write up Reduce CTF</a>
+    </h3>
+    <p>Hexer diberikan clue sebagai berikut
+ Hi I&amp;rsquo;m hexer and i will hex you
+49 6d 20 68 65 78 65 72
+ seperti pada judul soal ini merupakan bilangan …</p>
+
+    
+  </div>
+</article>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+  <footer class="section-sm">
+  <div class="container">
+    <div class="row justify-content-center align-items-center">
+      <div class="col-lg-5">
+        
+      </div>
+      <div class="col-lg-12 text-center mt-5">
+        <ul class="list-inline footer-menu mb-4">
+          
+          <li class="list-inline-item mx-3"><a href="https://fallcrescent.my.id/about/">About</a></li>
+          
+          <li class="list-inline-item mx-3"><a href="https://fallcrescent.my.id/author/">Authors</a></li>
+          
+        </ul>
+        <ul class="social-links icon-box list-unstyled list-inline font-weight-500 mb-3">
+          
+          <li class="list-inline-item text-center"><a href="https://www.facebook.com/m.kizbudin1" aria-label="social-icon">
+            <i class="lab lab la-facebook-f"></i>
+          </a></li>
+          
+          <li class="list-inline-item text-center"><a href="https://www.twitter.com/fallcrescent151" aria-label="social-icon">
+            <i class="lab lab la-twitter"></i>
+          </a></li>
+          
+          <li class="list-inline-item text-center"><a href="https://www.instagram.com/" aria-label="social-icon">
+            <i class="lab lab la-instagram"></i>
+          </a></li>
+          
+          <li class="list-inline-item text-center"><a href="https://www.linkedin.com/" aria-label="social-icon">
+            <i class="lab lab la-linkedin-in"></i>
+          </a></li>
+          
+        </ul>
+        
+        <p class="mb-0 font-weight-500 copyright-text content">Designed By <a href="https://gethugothemes.com/">Gethugothemes</a> &amp; Developed by <a href="https://fallcrescent.my.id">M. Kizbudin</a></p>
+        
+      </div>
+    </div>
+  </div>
+</footer>
+  
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+<script data-turbolinks-suppress-warning src="/js/vendor.min.104c16bb588dd60f4bc0cbb9828dcf214eb0a6775f69f74f025b75dc5aac73eb47da26aef00c8f4e3d7a85099a8054c195d03d63aa88d1b4213a47274755994e.js" integrity="sha512-EEwWu1iN1g9LwMu5go3PIU6wpndfafdPAlt13Fqsc&#43;tH2iau8AyPTj16hQmagFTBldA9Y6qI0bQhOkcnR1WZTg=="></script>
+
+
+
+</body>
+
+</html>
