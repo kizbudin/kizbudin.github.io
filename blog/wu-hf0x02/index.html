@@ -1,631 +1,158 @@
-<!DOCTYPE html>
-<html lang="en-US">
-<head>
-  <meta charset="utf-8">
-  <title>Write up HackFest 0x02</title>
+<!doctype html><html lang=en-us><head><meta charset=utf-8><title>Write up HackFest 0x02</title><meta name=author content="FallCrescent"><meta name=description content="Welcome to my blog"><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=5"><link rel=icon href=https://fallcrescent.my.id/images/favicon.png type=image/x-icon><link rel=preconnect href=https://fonts.gstatic.com><link rel=stylesheet href="https://fonts.googleapis.com/css2?family=Mulish:wght@500;600;700;800;900&display=swap"><link rel=stylesheet href=https://fallcrescent.my.id/css/vendor.min.22e8d76fe11d22819ea97a70762bd28ea9e3e7eaa95c893743c7ca069aa5ed54d8e4faf39438b872bfa09dc45d95d355c629a9da1a0984bbd3e6b06542b811a6.css integrity="sha512-IujXb+EdIoGeqXpwdivSjqnj5+qpXIk3Q8fKBpql7VTY5PrzlDi4cr+gncRdldNVximp2hoJhLvT5rBlQrgRpg==" media=screen></head><body><div class=header-height-fix></div><header class=header-nav><div class=container><div class=row><div class=col-12><nav class="navbar navbar-expand-lg navbar-light p-0"><a class="navbar-brand font-weight-bold mr-0" href=https://fallcrescent.my.id><img loading=lazy src=https://fallcrescent.my.id/images/FallCrescent.png alt="Fallcrescent - Blog" height=35px></a>
+<button class="search-toggle d-inline-block d-lg-none ml-auto mr-3" data-toggle=search aria-label="Search Toggle">
+<i class="las la-search"></i></button>
+<button class=navbar-toggler type=button data-toggle=collapse data-target=#navHeader aria-controls=navHeader aria-expanded=false aria-label="Toggle navigation">
+<i class="d-inline lab la-buromobelexperte"></i><i class="d-none las la-times"></i></button><div class="collapse navbar-collapse" id=navHeader><ul class="navbar-nav mx-auto"><li class=nav-item><a class=nav-link href=https://fallcrescent.my.id/>Home</a></li><li class=nav-item><a class=nav-link href=https://fallcrescent.my.id/about>About</a></li><li class=nav-item><a class=nav-link href=https://fallcrescent.my.id/contact>Contact me</a></li><li class="nav-item dropdown"><a class="nav-link dropdown-toggle d-inline-block" href=# role=button data-toggle=dropdown aria-expanded=false>Pages</a><ul class=dropdown-menu><li><a class=dropdown-item href=https://fallcrescent.my.id/author/>Author</a></li><li><a class=dropdown-item href=https://fallcrescent.my.id/tags/>Tags</a></li><li><a class=dropdown-item href=https://fallcrescent.my.id/categories/>Category</a></li></ul></li></ul><div class="navbar-right d-none d-lg-inline-block"><ul class="social-links list-unstyled list-inline"><li class="list-inline-item ml-4 d-none d-lg-inline-block"><button class=search-toggle data-toggle=search aria-label="Search Toggle">
+<i class="las la-search"></i></button></li></ul></div></div></nav></div></div></div></header><div class=search-block><div data-toggle=search-close><i class="las la-times text-primary"></i></div><form action=/search><input id=search-query name=s type=search placeholder="Type words & hit enter" class=text-center aria-label=search-query></form></div><section class=section-sm><div class=container><div class="row justify-content-center"><div class=col-lg-10><div class="text-center mb-5"><h3 class="h2 mb-4 post-title">Write up HackFest 0x02</h3><ul class="card-meta list-inline"><li class=list-inline-item><a href=#! class=card-meta-author><a href=https://fallcrescent.my.id/author/kizbudin/ class=card-meta-author><img loading=lazy src=https://fallcrescent.my.id/images/author/author-3.png alt="M. Kizbudin">
+<span>M. Kizbudin</span></a></a></li><li class=list-inline-item>|</li><li class=list-inline-item><span>27 January 2019</span></li></ul></div><div class="mb-5 text-center"><img loading=lazy class="img-fluid rounded" src=https://fallcrescent.my.id/images/post/hf-ccug.png alt="Image not Found"></div><div class=content><h2 id=cryptography>Cryptography</h2><h3 id=one-byte-xor>One Byte XOR</h3><p>diberikan file ZIP berisi source code python encryptor dan hasil enkripsinya berikut adalah scriptnya</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#f92672>from</span> Crypto <span style=color:#f92672>import</span> Random
+<span style=color:#f92672>import</span> base64
 
-  <meta name="author" content="FallCrescent">
-  <meta name="description" content="  Welcome to my blog  ">
+<span style=color:#66d9ef>def</span> <span style=color:#a6e22e>main</span>():
+ flag <span style=color:#f92672>=</span> open(<span style=color:#e6db74></span><span style=color:#e6db74>&#34;</span><span style=color:#e6db74>flag.txt</span><span style=color:#e6db74>&#34;</span>,<span style=color:#e6db74></span><span style=color:#e6db74>&#34;</span><span style=color:#e6db74>rb</span><span style=color:#e6db74>&#34;</span>)<span style=color:#f92672>.</span>read()
+ key <span style=color:#f92672>=</span> Random<span style=color:#f92672>.</span>new()<span style=color:#f92672>.</span>read(<span style=color:#ae81ff>1</span>)
+ res <span style=color:#f92672>=</span> <span style=color:#e6db74></span><span style=color:#e6db74>&#34;</span><span style=color:#e6db74>&#34;</span>
+ <span style=color:#66d9ef>for</span> i <span style=color:#f92672>in</span> range(len(flag)):
+     res <span style=color:#f92672>+</span><span style=color:#f92672>=</span> chr(ord(flag[i]) <span style=color:#f92672>^</span> ord(key))
+ res <span style=color:#f92672>=</span> base64<span style=color:#f92672>.</span>b64encode(res)
+ open(<span style=color:#e6db74></span><span style=color:#e6db74>&#34;</span><span style=color:#e6db74>encrypted</span><span style=color:#e6db74>&#34;</span>,<span style=color:#e6db74></span><span style=color:#e6db74>&#34;</span><span style=color:#e6db74>wb</span><span style=color:#e6db74>&#34;</span>)<span style=color:#f92672>.</span>write(res)
 
-  <!-- mobile responsive meta -->
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
-
-  <!-- Favicon -->
-  <link rel="icon" href="https://fallcrescent.my.id/images/favicon.png" type="image/x-icon">
-
-  <!-- CSS Plugins -->
-  
-<link rel="preconnect" href="https://fonts.gstatic.com">
-
-
-
-
-
-
-
-
-
-
-
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mulish:wght@500;600;700;800;900&amp;display=swap">
-
-
-
-
-<link rel="stylesheet" href="https://fallcrescent.my.id/css/vendor.min.f38e7c7e6ab34c94774fb608f1bb6b5912854002ca41fa9c63fd334fcddbd97e26be4783c0f6fd40b8fc78776c7169352bbc43ccfa6f56de22009e059d7401e1.css" integrity="sha512-8458fmqzTJR3T7YI8btrWRKFQALKQfqcY/0zT83b2X4mvkeDwPb9QLj8eHdscWk1K7xDzPpvVt4iAJ4FnXQB4Q==" media="screen">
-
-</head>
-
-<body>
-  
-  <div class="header-height-fix"></div>
-<header class="header-nav">
-  <div class="container">
-    <div class="row">
-      <div class="col-12">
-        <nav class="navbar navbar-expand-lg navbar-light p-0">
-          <a class="navbar-brand font-weight-bold mr-0" href="https://fallcrescent.my.id">
-            
-            <img loading="lazy" src="https://fallcrescent.my.id/images/FallCrescent.png" alt="Fallcrescent - Blog" height="35px">
-            
-          </a>
-
-          
-          <button class="search-toggle d-inline-block d-lg-none ml-auto mr-3" data-toggle="search" aria-label="Search Toggle">
-            <i class="las la-search"></i>
-          </button>
-          
-
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navHeader" aria-controls="navHeader" aria-expanded="false" aria-label="Toggle navigation">
-            <i class="d-inline lab la-buromobelexperte"></i>
-            <i class="d-none las la-times"></i>
-          </button>
-
-          <div class="collapse navbar-collapse" id="navHeader">
-            <ul class="navbar-nav mx-auto">
-
-              
-              
-              
-              
-              
-              <li class="nav-item ">
-                <a class="nav-link" href="https://fallcrescent.my.id/">Home</a>
-              </li>
-              
-              
-              
-              
-              
-              <li class="nav-item ">
-                <a class="nav-link" href="https://fallcrescent.my.id/about">About</a>
-              </li>
-              
-              
-              
-              
-              
-              <li class="nav-item ">
-                <a class="nav-link" href="https://fallcrescent.my.id/contact">Contact me</a>
-              </li>
-              
-              
-              
-              
-              
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle d-inline-block " href="#" role="button" data-toggle="dropdown" aria-expanded="false">Pages</a>
-                <ul class="dropdown-menu">
-                  
-                  <li><a class="dropdown-item " href="https://fallcrescent.my.id/author/">Author</a></li>
-                  
-                  <li><a class="dropdown-item " href="https://fallcrescent.my.id/tags/">Tags</a></li>
-                  
-                  <li><a class="dropdown-item " href="https://fallcrescent.my.id/categories/">Category</a></li>
-                  
-                </ul>
-              </li>
-              
-              
-            </ul>
-            
-            
-            <div class="navbar-right d-none d-lg-inline-block">
-              <ul class="social-links list-unstyled list-inline">
-                <li class="list-inline-item ml-4 d-none d-lg-inline-block">
-                  <button class="search-toggle" data-toggle="search" aria-label="Search Toggle">
-                    <i class="las la-search"></i>
-                  </button>
-                </li>
-              </ul>
-            </div>
-            
-          </div>
-        </nav>
-      </div>
-    </div>
-  </div>
-</header>
-
-
-<div class="search-block">
-  <div data-toggle="search-close">
-    <i class="las la-times text-primary"></i>
-  </div>
-  <form action="/search">
-    <input id="search-query" name="s" type="search" placeholder="Type words &amp; hit enter" class="text-center" aria-label="search-query">
-  </form>
-</div>
-
-  
-  
-
-
-
-
-<section class="section-sm">
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-lg-10">
-        <div class="text-center mb-5">
-          <h3 class="h2 mb-4 post-title">Write up HackFest 0x02</h3>
-          <ul class="card-meta list-inline">
-            <li class="list-inline-item">
-              <a href="#!" class="card-meta-author">
-                
-                <a href="https://fallcrescent.my.id/author/kizbudin/" class="card-meta-author">
-                  <img loading="lazy" src="https://fallcrescent.my.id/images/author/author-3.png" alt="M. Kizbudin">
-                  <span>M. Kizbudin</span>
-                </a>
-                
-              </a>
-            </li>
-            <li class="list-inline-item">|</li>
-            <li class="list-inline-item">
-              <span>27 January 2019</span>
-            </li>
-          </ul>
-        </div>
-
-        
-        <div class="mb-5 text-center">
-          <img loading="lazy" class="img-fluid rounded" src="https://fallcrescent.my.id/images/post/hf-ccug.png" alt="Image not Found">
-        </div>
-        
-
-        <div class="content">
-          <h2 id="cryptography">Cryptography</h2>
-<h3 id="one-byte-xor">One Byte XOR</h3>
-<p>diberikan file ZIP berisi source code python encryptor dan hasil enkripsinya berikut adalah scriptnya</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> Crypto <span style="color:#f92672">import</span> Random
-<span style="color:#f92672">import</span> base64
-
-<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">main</span>():
- flag <span style="color:#f92672">=</span> open(<span style="color:#e6db74">&#34;flag.txt&#34;</span>,<span style="color:#e6db74">&#34;rb&#34;</span>)<span style="color:#f92672">.</span>read()
- key <span style="color:#f92672">=</span> Random<span style="color:#f92672">.</span>new()<span style="color:#f92672">.</span>read(<span style="color:#ae81ff">1</span>)
- res <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;</span>
- <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(len(flag)):
-     res <span style="color:#f92672">+=</span> chr(ord(flag[i]) <span style="color:#f92672">^</span> ord(key))
- res <span style="color:#f92672">=</span> base64<span style="color:#f92672">.</span>b64encode(res)
- open(<span style="color:#e6db74">&#34;encrypted&#34;</span>,<span style="color:#e6db74">&#34;wb&#34;</span>)<span style="color:#f92672">.</span>write(res)
-
-<span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;__main__&#34;</span>:
+<span style=color:#66d9ef>if</span> __name__ <span style=color:#f92672>==</span> <span style=color:#e6db74></span><span style=color:#e6db74>&#34;</span><span style=color:#e6db74>__main__</span><span style=color:#e6db74>&#34;</span>:
  main()
-</code></pre></div><p>Fungsi enkirptor diatas adalah meng-XOR setiap character dengan 1 byte key random, lalu hasilnya di encode ke base64. Untuk menyelesaikan challenge ini, penulis menggunakan Brute Force untuk angka dari 0 sampai 256 berikut adalah script solvernya</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">
-<span style="color:#f92672">from</span> Crypto <span style="color:#f92672">import</span> Random
-<span style="color:#f92672">import</span> base64
+</code></pre></div><p>Fungsi enkirptor diatas adalah meng-XOR setiap character dengan 1 byte key random, lalu hasilnya di encode ke base64. Untuk menyelesaikan challenge ini, penulis menggunakan Brute Force untuk angka dari 0 sampai 256 berikut adalah script solvernya</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python>
+<span style=color:#f92672>from</span> Crypto <span style=color:#f92672>import</span> Random
+<span style=color:#f92672>import</span> base64
 
-flag <span style="color:#f92672">=</span> open(<span style="color:#e6db74">&#34;flag.txt&#34;</span>,<span style="color:#e6db74">&#34;rb&#34;</span>)<span style="color:#f92672">.</span>read()
-flag <span style="color:#f92672">=</span> base64<span style="color:#f92672">.</span>b64decode(flag)
+flag <span style=color:#f92672>=</span> open(<span style=color:#e6db74></span><span style=color:#e6db74>&#34;</span><span style=color:#e6db74>flag.txt</span><span style=color:#e6db74>&#34;</span>,<span style=color:#e6db74></span><span style=color:#e6db74>&#34;</span><span style=color:#e6db74>rb</span><span style=color:#e6db74>&#34;</span>)<span style=color:#f92672>.</span>read()
+flag <span style=color:#f92672>=</span> base64<span style=color:#f92672>.</span>b64decode(flag)
 
-<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">xorString</span>(string,key):
-    res <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;</span>
-    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(len(string)):
-     res <span style="color:#f92672">+=</span> chr(ord(flag[i]) <span style="color:#f92672">^</span> key)
-    <span style="color:#66d9ef">return</span> res
+<span style=color:#66d9ef>def</span> <span style=color:#a6e22e>xorString</span>(string,key):
+    res <span style=color:#f92672>=</span> <span style=color:#e6db74></span><span style=color:#e6db74>&#34;</span><span style=color:#e6db74>&#34;</span>
+    <span style=color:#66d9ef>for</span> i <span style=color:#f92672>in</span> range(len(string)):
+     res <span style=color:#f92672>+</span><span style=color:#f92672>=</span> chr(ord(flag[i]) <span style=color:#f92672>^</span> key)
+    <span style=color:#66d9ef>return</span> res
 
-<span style="color:#66d9ef">for</span> j <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">256</span>):
-    resu <span style="color:#f92672">=</span> xorString(flag,j)
-    <span style="color:#66d9ef">if</span> <span style="color:#e6db74">&#34;HackFest&#34;</span> <span style="color:#f92672">in</span> resu:
-     print j,resu
+<span style=color:#66d9ef>for</span> j <span style=color:#f92672>in</span> range(<span style=color:#ae81ff>0</span>,<span style=color:#ae81ff>256</span>):
+    resu <span style=color:#f92672>=</span> xorString(flag,j)
+    <span style=color:#66d9ef>if</span> <span style=color:#e6db74></span><span style=color:#e6db74>&#34;</span><span style=color:#e6db74>HackFest</span><span style=color:#e6db74>&#34;</span> <span style=color:#f92672>in</span> resu:
+     <span style=color:#66d9ef>print</span> j,resu
 </code></pre></div><p>Setelah di run maka di dapatkan output :
-Selamat, ini <strong>flagnya : HackFest{ketika_ragu_dan_galau_brute_force_aja}</strong></p>
-<h3 id="cryptizi">Cryptizi</h3>
-<p>Diberikan file zip berisi source code python berupa enkriptor, berikut adalah Scriptnya</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">main</span>():
-    print(<span style="color:#e6db74">&#34;#[][][]ENKRIPTOR mini &#34;</span> )
-    x <span style="color:#f92672">=</span> raw_input(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n\n</span><span style="color:#e6db74">tYPE : </span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>)
-    x <span style="color:#f92672">=</span> duniasakti(x)
-    print(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n\n</span><span style="color:#e6db74"> </span><span style="color:#e6db74">{}</span><span style="color:#e6db74">RESULT :</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">+</span> x)
-    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>
+Selamat, ini <strong>flagnya : HackFest{ketika_ragu_dan_galau_brute_force_aja}</strong></p><h3 id=cryptizi>Cryptizi</h3><p>Diberikan file zip berisi source code python berupa enkriptor, berikut adalah Scriptnya</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>main</span>():
+    <span style=color:#66d9ef>print</span>(<span style=color:#e6db74></span><span style=color:#e6db74>&#34;</span><span style=color:#e6db74>#[][][]ENKRIPTOR mini </span><span style=color:#e6db74>&#34;</span> )
+    x <span style=color:#f92672>=</span> raw_input(<span style=color:#e6db74></span><span style=color:#e6db74>&#34;</span><span style=color:#ae81ff>\n</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>tYPE : </span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>&#34;</span>)
+    x <span style=color:#f92672>=</span> duniasakti(x)
+    <span style=color:#66d9ef>print</span>(<span style=color:#e6db74></span><span style=color:#e6db74>&#34;</span><span style=color:#ae81ff>\n</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74> {}RESULT :</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>&#34;</span> <span style=color:#f92672>+</span> x)
+    <span style=color:#66d9ef>return</span> <span style=color:#ae81ff>0</span>
 
-<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">duniasakti</span>(yy):
-    x <span style="color:#f92672">=</span> list(yy)
-    a <span style="color:#f92672">=</span> len(x) <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>
-    n <span style="color:#f92672">=</span> a<span style="color:#f92672">/</span><span style="color:#ae81ff">2</span>
-    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(n,a<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>):
-     temp <span style="color:#f92672">=</span> x[a<span style="color:#f92672">-</span>i]
-     x[a<span style="color:#f92672">-</span>i] <span style="color:#f92672">=</span> x[i]
-     x[i]   <span style="color:#f92672">=</span> temp
-    a <span style="color:#f92672">=</span> a <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>
-    v <span style="color:#f92672">=</span> a <span style="color:#f92672">*</span> <span style="color:#ae81ff">3</span>
-    <span style="color:#66d9ef">for</span> h <span style="color:#f92672">in</span> range(a):
-     temp <span style="color:#f92672">=</span> x[h]
-     <span style="color:#66d9ef">for</span> j <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">256</span>):
-      karakter <span style="color:#f92672">=</span> chr(j)
-      <span style="color:#66d9ef">if</span>(karakter<span style="color:#f92672">==</span>temp):
-       x[h] <span style="color:#f92672">=</span> str(j<span style="color:#f92672">*</span>v)
-       <span style="color:#66d9ef">break</span>
-     <span style="color:#66d9ef">continue</span>
-    x <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Un%&#34;</span><span style="color:#f92672">.</span>join(x)
-    x <span style="color:#f92672">=</span> list(x)
-    z <span style="color:#f92672">=</span> list()
-    yuyu <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;1&#39;</span>,<span style="color:#e6db74">&#39;2&#39;</span>,<span style="color:#e6db74">&#39;3&#39;</span>,<span style="color:#e6db74">&#39;4&#39;</span>]
-    kangkang <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;!*&#39;</span>,<span style="color:#e6db74">&#39;x&#39;</span>,<span style="color:#e6db74">&#39;_&#39;</span>,<span style="color:#e6db74">&#39;q&#39;</span>]
-    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> x:
-     c <span style="color:#f92672">=</span> i <span style="color:#f92672">in</span> yuyu
-     <span style="color:#66d9ef">if</span>(c <span style="color:#f92672">==</span> <span style="color:#66d9ef">True</span>):
-      i <span style="color:#f92672">=</span> kangkang[yuyu<span style="color:#f92672">.</span>index(i)]
-     z<span style="color:#f92672">.</span>append(i)
-    z <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span><span style="color:#f92672">.</span>join(z)
-    <span style="color:#66d9ef">return</span>(z)
+<span style=color:#66d9ef>def</span> <span style=color:#a6e22e>duniasakti</span>(yy):
+    x <span style=color:#f92672>=</span> list(yy)
+    a <span style=color:#f92672>=</span> len(x) <span style=color:#f92672>-</span> <span style=color:#ae81ff>1</span>
+    n <span style=color:#f92672>=</span> a<span style=color:#f92672>/</span><span style=color:#ae81ff>2</span>
+    <span style=color:#66d9ef>for</span> i <span style=color:#f92672>in</span> range(n,a<span style=color:#f92672>+</span><span style=color:#ae81ff>1</span>):
+     temp <span style=color:#f92672>=</span> x[a<span style=color:#f92672>-</span>i]
+     x[a<span style=color:#f92672>-</span>i] <span style=color:#f92672>=</span> x[i]
+     x[i]   <span style=color:#f92672>=</span> temp
+    a <span style=color:#f92672>=</span> a <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span>
+    v <span style=color:#f92672>=</span> a <span style=color:#f92672>*</span> <span style=color:#ae81ff>3</span>
+    <span style=color:#66d9ef>for</span> h <span style=color:#f92672>in</span> range(a):
+     temp <span style=color:#f92672>=</span> x[h]
+     <span style=color:#66d9ef>for</span> j <span style=color:#f92672>in</span> range(<span style=color:#ae81ff>256</span>):
+      karakter <span style=color:#f92672>=</span> chr(j)
+      <span style=color:#66d9ef>if</span>(karakter<span style=color:#f92672>==</span>temp):
+       x[h] <span style=color:#f92672>=</span> str(j<span style=color:#f92672>*</span>v)
+       <span style=color:#66d9ef>break</span>
+     <span style=color:#66d9ef>continue</span>
+    x <span style=color:#f92672>=</span> <span style=color:#e6db74></span><span style=color:#e6db74>&#34;</span><span style=color:#e6db74>Un</span><span style=color:#e6db74>%</span><span style=color:#e6db74>&#34;</span><span style=color:#f92672>.</span>join(x)
+    x <span style=color:#f92672>=</span> list(x)
+    z <span style=color:#f92672>=</span> list()
+    yuyu <span style=color:#f92672>=</span> [<span style=color:#e6db74></span><span style=color:#e6db74>&#39;</span><span style=color:#e6db74>1</span><span style=color:#e6db74>&#39;</span>,<span style=color:#e6db74></span><span style=color:#e6db74>&#39;</span><span style=color:#e6db74>2</span><span style=color:#e6db74>&#39;</span>,<span style=color:#e6db74></span><span style=color:#e6db74>&#39;</span><span style=color:#e6db74>3</span><span style=color:#e6db74>&#39;</span>,<span style=color:#e6db74></span><span style=color:#e6db74>&#39;</span><span style=color:#e6db74>4</span><span style=color:#e6db74>&#39;</span>]
+    kangkang <span style=color:#f92672>=</span> [<span style=color:#e6db74></span><span style=color:#e6db74>&#39;</span><span style=color:#e6db74>!*</span><span style=color:#e6db74>&#39;</span>,<span style=color:#e6db74></span><span style=color:#e6db74>&#39;</span><span style=color:#e6db74>x</span><span style=color:#e6db74>&#39;</span>,<span style=color:#e6db74></span><span style=color:#e6db74>&#39;</span><span style=color:#e6db74>_</span><span style=color:#e6db74>&#39;</span>,<span style=color:#e6db74></span><span style=color:#e6db74>&#39;</span><span style=color:#e6db74>q</span><span style=color:#e6db74>&#39;</span>]
+    <span style=color:#66d9ef>for</span> i <span style=color:#f92672>in</span> x:
+     c <span style=color:#f92672>=</span> i <span style=color:#f92672>in</span> yuyu
+     <span style=color:#66d9ef>if</span>(c <span style=color:#f92672>==</span> True):
+      i <span style=color:#f92672>=</span> kangkang[yuyu<span style=color:#f92672>.</span>index(i)]
+     z<span style=color:#f92672>.</span>append(i)
+    z <span style=color:#f92672>=</span> <span style=color:#e6db74></span><span style=color:#e6db74>&#39;</span><span style=color:#e6db74>&#39;</span><span style=color:#f92672>.</span>join(z)
+    <span style=color:#66d9ef>return</span>(z)
 
-<span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;__main__&#39;</span>:
+<span style=color:#66d9ef>if</span> __name__ <span style=color:#f92672>==</span> <span style=color:#e6db74></span><span style=color:#e6db74>&#39;</span><span style=color:#e6db74>__main__</span><span style=color:#e6db74>&#39;</span>:
     main()
-</code></pre></div><p>enkripsi ini merubah text asli (Plain text) menjadi list dan merubahnya dengan sebuah inyeger lalu di gabung dengan &ldquo;Un5%&rdquo; dan merubah angka menjadi !*,x,_,q secara berurutan, berikut adalah solvernya</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">cipher <span style="color:#f92672">=</span> open(<span style="color:#e6db74">&#34;xxcheap.enc&#34;</span>,<span style="color:#e6db74">&#34;rb&#34;</span>)<span style="color:#f92672">.</span>read()
+</code></pre></div><p>enkripsi ini merubah text asli (Plain text) menjadi list dan merubahnya dengan sebuah inyeger lalu di gabung dengan &ldquo;Un5%&rdquo; dan merubah angka menjadi !*,x,_,q secara berurutan, berikut adalah solvernya</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python>cipher <span style=color:#f92672>=</span> open(<span style=color:#e6db74></span><span style=color:#e6db74>&#34;</span><span style=color:#e6db74>xxcheap.enc</span><span style=color:#e6db74>&#34;</span>,<span style=color:#e6db74></span><span style=color:#e6db74>&#34;</span><span style=color:#e6db74>rb</span><span style=color:#e6db74>&#34;</span>)<span style=color:#f92672>.</span>read()
 
-cipher <span style="color:#f92672">=</span> cipher<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#34;!*&#34;</span>,<span style="color:#e6db74">&#34;1&#34;</span>)
-cipher <span style="color:#f92672">=</span> cipher<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#34;x&#34;</span>,<span style="color:#e6db74">&#34;2&#34;</span>)
-cipher <span style="color:#f92672">=</span> cipher<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#34;_&#34;</span>,<span style="color:#e6db74">&#34;3&#34;</span>)
-cipher <span style="color:#f92672">=</span> cipher<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#34;q&#34;</span>,<span style="color:#e6db74">&#34;4&#34;</span>)
-cipher <span style="color:#f92672">=</span> cipher<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#34;Un%&#34;</span>,<span style="color:#e6db74">&#34; &#34;</span>)
-print cipher
+cipher <span style=color:#f92672>=</span> cipher<span style=color:#f92672>.</span>replace(<span style=color:#e6db74></span><span style=color:#e6db74>&#34;</span><span style=color:#e6db74>!*</span><span style=color:#e6db74>&#34;</span>,<span style=color:#e6db74></span><span style=color:#e6db74>&#34;</span><span style=color:#e6db74>1</span><span style=color:#e6db74>&#34;</span>)
+cipher <span style=color:#f92672>=</span> cipher<span style=color:#f92672>.</span>replace(<span style=color:#e6db74></span><span style=color:#e6db74>&#34;</span><span style=color:#e6db74>x</span><span style=color:#e6db74>&#34;</span>,<span style=color:#e6db74></span><span style=color:#e6db74>&#34;</span><span style=color:#e6db74>2</span><span style=color:#e6db74>&#34;</span>)
+cipher <span style=color:#f92672>=</span> cipher<span style=color:#f92672>.</span>replace(<span style=color:#e6db74></span><span style=color:#e6db74>&#34;</span><span style=color:#e6db74>_</span><span style=color:#e6db74>&#34;</span>,<span style=color:#e6db74></span><span style=color:#e6db74>&#34;</span><span style=color:#e6db74>3</span><span style=color:#e6db74>&#34;</span>)
+cipher <span style=color:#f92672>=</span> cipher<span style=color:#f92672>.</span>replace(<span style=color:#e6db74></span><span style=color:#e6db74>&#34;</span><span style=color:#e6db74>q</span><span style=color:#e6db74>&#34;</span>,<span style=color:#e6db74></span><span style=color:#e6db74>&#34;</span><span style=color:#e6db74>4</span><span style=color:#e6db74>&#34;</span>)
+cipher <span style=color:#f92672>=</span> cipher<span style=color:#f92672>.</span>replace(<span style=color:#e6db74></span><span style=color:#e6db74>&#34;</span><span style=color:#e6db74>Un</span><span style=color:#e6db74>%</span><span style=color:#e6db74>&#34;</span>,<span style=color:#e6db74></span><span style=color:#e6db74>&#34;</span><span style=color:#e6db74> </span><span style=color:#e6db74>&#34;</span>)
+<span style=color:#66d9ef>print</span> cipher
 
-a <span style="color:#f92672">=</span> <span style="color:#ae81ff">33</span>
-v <span style="color:#f92672">=</span> a <span style="color:#f92672">*</span> <span style="color:#ae81ff">3</span>
-x <span style="color:#f92672">=</span> [<span style="color:#ae81ff">12375</span>, <span style="color:#ae81ff">10395</span>, <span style="color:#ae81ff">11484</span>, <span style="color:#ae81ff">11286</span>, <span style="color:#ae81ff">9999</span>, <span style="color:#ae81ff">10197</span>, <span style="color:#ae81ff">10890</span>, <span style="color:#ae81ff">9999</span>, <span style="color:#ae81ff">10791</span>, <span style="color:#ae81ff">10395</span>, <span style="color:#ae81ff">9900</span>, <span style="color:#ae81ff">9405</span>, <span style="color:#ae81ff">11484</span>, <span style="color:#ae81ff">10395</span>, <span style="color:#ae81ff">10692</span>, <span style="color:#ae81ff">11583</span>, <span style="color:#ae81ff">11385</span>, <span style="color:#ae81ff">9405</span>, <span style="color:#ae81ff">9603</span>, <span style="color:#ae81ff">10395</span>, <span style="color:#ae81ff">11385</span>, <span style="color:#ae81ff">11583</span>, <span style="color:#ae81ff">10890</span>, <span style="color:#ae81ff">9603</span>, <span style="color:#ae81ff">10791</span>, <span style="color:#ae81ff">9405</span>, <span style="color:#ae81ff">10197</span>, <span style="color:#ae81ff">10890</span>, <span style="color:#ae81ff">9603</span>, <span style="color:#ae81ff">9900</span>, <span style="color:#ae81ff">9603</span>, <span style="color:#ae81ff">10593</span>, <span style="color:#ae81ff">12177</span>]
-t <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;</span>
+a <span style=color:#f92672>=</span> <span style=color:#ae81ff>33</span>
+v <span style=color:#f92672>=</span> a <span style=color:#f92672>*</span> <span style=color:#ae81ff>3</span>
+x <span style=color:#f92672>=</span> [<span style=color:#ae81ff>12375</span>, <span style=color:#ae81ff>10395</span>, <span style=color:#ae81ff>11484</span>, <span style=color:#ae81ff>11286</span>, <span style=color:#ae81ff>9999</span>, <span style=color:#ae81ff>10197</span>, <span style=color:#ae81ff>10890</span>, <span style=color:#ae81ff>9999</span>, <span style=color:#ae81ff>10791</span>, <span style=color:#ae81ff>10395</span>, <span style=color:#ae81ff>9900</span>, <span style=color:#ae81ff>9405</span>, <span style=color:#ae81ff>11484</span>, <span style=color:#ae81ff>10395</span>, <span style=color:#ae81ff>10692</span>, <span style=color:#ae81ff>11583</span>, <span style=color:#ae81ff>11385</span>, <span style=color:#ae81ff>9405</span>, <span style=color:#ae81ff>9603</span>, <span style=color:#ae81ff>10395</span>, <span style=color:#ae81ff>11385</span>, <span style=color:#ae81ff>11583</span>, <span style=color:#ae81ff>10890</span>, <span style=color:#ae81ff>9603</span>, <span style=color:#ae81ff>10791</span>, <span style=color:#ae81ff>9405</span>, <span style=color:#ae81ff>10197</span>, <span style=color:#ae81ff>10890</span>, <span style=color:#ae81ff>9603</span>, <span style=color:#ae81ff>9900</span>, <span style=color:#ae81ff>9603</span>, <span style=color:#ae81ff>10593</span>, <span style=color:#ae81ff>12177</span>]
+t <span style=color:#f92672>=</span> <span style=color:#e6db74></span><span style=color:#e6db74>&#34;</span><span style=color:#e6db74>&#34;</span>
 
-print v
+<span style=color:#66d9ef>print</span> v
 
-<span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">33</span>):
-    h <span style="color:#f92672">=</span> x[i]
-    y <span style="color:#f92672">=</span> h<span style="color:#f92672">/</span>v
-    t <span style="color:#f92672">+=</span> chr(y)
+<span style=color:#66d9ef>for</span> i <span style=color:#f92672>in</span> range(<span style=color:#ae81ff>33</span>):
+    h <span style=color:#f92672>=</span> x[i]
+    y <span style=color:#f92672>=</span> h<span style=color:#f92672>/</span>v
+    t <span style=color:#f92672>+</span><span style=color:#f92672>=</span> chr(y)
 
-print(t[::<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>])
-</code></pre></div><p>maka akan keluar output</p>
-<pre><code>12375 10395 11484 11286 9999 10197 10890 9999 10791 10395 9900 9405 11484 10395 10692 11583 11385 9405 9603 10395 11385 11583 10890 9603 10791 9405 10197 10890 9603 9900 9603 10593 12177
+<span style=color:#66d9ef>print</span>(t[::<span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>])
+</code></pre></div><p>maka akan keluar output</p><pre><code>12375 10395 11484 11286 9999 10197 10890 9999 10791 10395 9900 9405 11484 10395 10692 11583 11385 9405 9603 10395 11385 11583 10890 9603 10791 9405 10197 10890 9603 9900 9603 10593 12177
 99
 {kadang_manusia_sulit_dimengerti}
-</code></pre><p><strong>Flag : HackFest{kadang_manusia_sulit_dimengerti}</strong></p>
-<h2 id="reverse-engineering">Reverse Engineering</h2>
-<h3 id="ular-terbungkus">Ular Terbungkus</h3>
-<p>Diberikan file dengan ekstensi file python yang sudah di compile (.pyc) dan ketika di run maka akan menampilkan :</p>
-<pre><code>----- Sarang Ular -----
+</code></pre><p><strong>Flag : HackFest{kadang_manusia_sulit_dimengerti}</strong></p><h2 id=reverse-engineering>Reverse Engineering</h2><h3 id=ular-terbungkus>Ular Terbungkus</h3><p>Diberikan file dengan ekstensi file python yang sudah di compile (.pyc) dan ketika di run maka akan menampilkan :</p><pre><code>----- Sarang Ular -----
 Flag :
-</code></pre><p>untuk menyelesaikan challenge ini, penulis terlebih dahulu mendecompyle dengan bantuan Uncompyle6, dan saat di run akan tampil :</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">┌─<span style="color:#f92672">[</span>fallcrescent@parrot<span style="color:#f92672">]</span>─<span style="color:#f92672">[</span>~/Hackfest/Crypto/Multibyte_XOR_Source<span style="color:#f92672">]</span>
+</code></pre><p>untuk menyelesaikan challenge ini, penulis terlebih dahulu mendecompyle dengan bantuan Uncompyle6, dan saat di run akan tampil :</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>┌─<span style=color:#f92672>[</span>fallcrescent@parrot<span style=color:#f92672>]</span>─<span style=color:#f92672>[</span>~/Hackfest/Crypto/Multibyte_XOR_Source<span style=color:#f92672>]</span>
 └──╼ $ uncompyle6 ular_terbungkus.pyc
-<span style="color:#75715e"># uncompyle6 version 3.2.4</span>
-<span style="color:#75715e"># Python bytecode 2.7 (62211)</span>
-<span style="color:#75715e"># Decompiled from: Python 2.7.15+ (default, Nov 28 2018, 16:27:22)</span>
-<span style="color:#75715e"># [GCC 8.2.0]</span>
-<span style="color:#75715e"># Embedded file name: ular_terbungkus.py</span>
-<span style="color:#75715e"># Compiled at: 2018-12-12 08:33:32</span>
+<span style=color:#75715e># uncompyle6 version 3.2.4</span>
+<span style=color:#75715e># Python bytecode 2.7 (62211)</span>
+<span style=color:#75715e># Decompiled from: Python 2.7.15+ (default, Nov 28 2018, 16:27:22)</span>
+<span style=color:#75715e># [GCC 8.2.0]</span>
+<span style=color:#75715e># Embedded file name: ular_terbungkus.py</span>
+<span style=color:#75715e># Compiled at: 2018-12-12 08:33:32</span>
 from Crypto.Cipher import AES
 import hashlib, base64
 
 class Ular:
 
- def __init__<span style="color:#f92672">(</span>self<span style="color:#f92672">)</span>:
-     self.ular_flag <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Gda+wKa52rT/1WaWzVXDVi23VemIwUNTpttG4JJddYGHDF4eSGj2/9tCZs8OTwzaizI75GTfxS/QGDKEVm9XBz2zM/WQGrM7gqDNfx3SCpVKtaENNnnYOZHwk8Lpo1wt&#39;</span>
+ def __init__<span style=color:#f92672>(</span>self<span style=color:#f92672>)</span>:
+     self.ular_flag <span style=color:#f92672>=</span> <span style=color:#e6db74>&#39;Gda+wKa52rT/1WaWzVXDVi23VemIwUNTpttG4JJddYGHDF4eSGj2/9tCZs8OTwzaizI75GTfxS/QGDKEVm9XBz2zM/WQGrM7gqDNfx3SCpVKtaENNnnYOZHwk8Lpo1wt&#39;</span>
 
- def unpad<span style="color:#f92672">(</span>self, s<span style="color:#f92672">)</span>:
-     <span style="color:#66d9ef">return</span> s<span style="color:#f92672">[</span>:-ord<span style="color:#f92672">(</span>s<span style="color:#f92672">[</span>-1<span style="color:#f92672">])]</span>
+ def unpad<span style=color:#f92672>(</span>self, s<span style=color:#f92672>)</span>:
+     <span style=color:#66d9ef>return</span> s<span style=color:#f92672>[</span>:-ord<span style=color:#f92672>(</span>s<span style=color:#f92672>[</span>-1<span style=color:#f92672>]</span><span style=color:#f92672>)</span><span style=color:#f92672>]</span>
 
- def decrypt<span style="color:#f92672">(</span>self, s<span style="color:#f92672">)</span>:
-     cip <span style="color:#f92672">=</span> base64.b64decode<span style="color:#f92672">(</span>s<span style="color:#f92672">)</span>
-     key <span style="color:#f92672">=</span> hashlib.md5<span style="color:#f92672">(</span>cip<span style="color:#f92672">[</span>:16<span style="color:#f92672">])</span>.hexdigest<span style="color:#f92672">()</span>
-     IV <span style="color:#f92672">=</span> cip<span style="color:#f92672">[</span>-16:<span style="color:#f92672">]</span>
-     cipher <span style="color:#f92672">=</span> cip<span style="color:#f92672">[</span>16:-16<span style="color:#f92672">]</span>
-     aes_obj <span style="color:#f92672">=</span> AES.new<span style="color:#f92672">(</span>key, AES.MODE_CBC, IV<span style="color:#f92672">)</span>
-     <span style="color:#66d9ef">return</span> self.unpad<span style="color:#f92672">(</span>aes_obj.decrypt<span style="color:#f92672">(</span>cipher<span style="color:#f92672">))</span>
+ def decrypt<span style=color:#f92672>(</span>self, s<span style=color:#f92672>)</span>:
+     cip <span style=color:#f92672>=</span> base64.b64decode<span style=color:#f92672>(</span>s<span style=color:#f92672>)</span>
+     key <span style=color:#f92672>=</span> hashlib.md5<span style=color:#f92672>(</span>cip<span style=color:#f92672>[</span>:16<span style=color:#f92672>]</span><span style=color:#f92672>)</span>.hexdigest<span style=color:#f92672>(</span><span style=color:#f92672>)</span>
+     IV <span style=color:#f92672>=</span> cip<span style=color:#f92672>[</span>-16:<span style=color:#f92672>]</span>
+     cipher <span style=color:#f92672>=</span> cip<span style=color:#f92672>[</span>16:-16<span style=color:#f92672>]</span>
+     aes_obj <span style=color:#f92672>=</span> AES.new<span style=color:#f92672>(</span>key, AES.MODE_CBC, IV<span style=color:#f92672>)</span>
+     <span style=color:#66d9ef>return</span> self.unpad<span style=color:#f92672>(</span>aes_obj.decrypt<span style=color:#f92672>(</span>cipher<span style=color:#f92672>)</span><span style=color:#f92672>)</span>
 
- def get_flag<span style="color:#f92672">(</span>self<span style="color:#f92672">)</span>:
-     <span style="color:#66d9ef">return</span> self.decrypt<span style="color:#f92672">(</span>self.ular_flag<span style="color:#f92672">)</span>
-
-
-def main<span style="color:#f92672">()</span>:
- print <span style="color:#e6db74">&#39;----- Sarang Ular -----&#39;</span>
- inp_flag <span style="color:#f92672">=</span> raw_input<span style="color:#f92672">(</span><span style="color:#e6db74">&#39;Flag : &#39;</span><span style="color:#f92672">)</span>
- real_flag <span style="color:#f92672">=</span> Ular<span style="color:#f92672">()</span>.get_flag<span style="color:#f92672">()</span>
- <span style="color:#66d9ef">if</span> inp_flag <span style="color:#f92672">==</span> real_flag:
-     print <span style="color:#e6db74">&#39;[+] Correct&#39;</span>
- <span style="color:#66d9ef">else</span>:
-     print <span style="color:#e6db74">&#39;[x] Wrong&#39;</span>
+ def get_flag<span style=color:#f92672>(</span>self<span style=color:#f92672>)</span>:
+     <span style=color:#66d9ef>return</span> self.decrypt<span style=color:#f92672>(</span>self.ular_flag<span style=color:#f92672>)</span>
 
 
-<span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;__main__&#39;</span>:
- main<span style="color:#f92672">()</span>
-<span style="color:#75715e"># okay decompiling ular_terbungkus.pyc</span>
-</code></pre></div><p>dari script diatas penulis hanya membenarkan penulisan script dengan menghapous bagian if dan input lalu menampilkan fungsi real_flag</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">main</span>():
- print <span style="color:#e6db74">&#39;----- Sarang Ular -----&#39;</span>
- real_flag <span style="color:#f92672">=</span> Ular()<span style="color:#f92672">.</span>get_flag()
- print(real_flag)
-</code></pre></div><p><strong>Flag : HackFest{88df7b7657844da585f1590c887bbaefdb2685c6}</strong></p>
+def main<span style=color:#f92672>(</span><span style=color:#f92672>)</span>:
+ print <span style=color:#e6db74>&#39;----- Sarang Ular -----&#39;</span>
+ inp_flag <span style=color:#f92672>=</span> raw_input<span style=color:#f92672>(</span><span style=color:#e6db74>&#39;Flag : &#39;</span><span style=color:#f92672>)</span>
+ real_flag <span style=color:#f92672>=</span> Ular<span style=color:#f92672>(</span><span style=color:#f92672>)</span>.get_flag<span style=color:#f92672>(</span><span style=color:#f92672>)</span>
+ <span style=color:#66d9ef>if</span> inp_flag <span style=color:#f92672>=</span><span style=color:#f92672>=</span> real_flag:
+     print <span style=color:#e6db74>&#39;[+] Correct&#39;</span>
+ <span style=color:#66d9ef>else</span>:
+     print <span style=color:#e6db74>&#39;[x] Wrong&#39;</span>
 
-        </div>
-      </div>
-    </div>
 
-    <div class="single-post-meta">
-      <div class="row justify-content-center">
-        <div class="col-lg-5 col-md-6 text-center text-md-left">
-          <ul class="post-meta-tags list-unstyled list-inline">
-            
-            <li class="list-inline-item"><a href="https://fallcrescent.my.id/tags/ctf">CTF</a></li>
-            
-          </ul>
-        </div>
-        <div class="col-lg-5 col-md-6 text-center text-md-right mt-4 mt-md-0">
-<ul class="social-links has-bg-color list-unstyled list-inline" style="line-height:0">
-  <li class="list-inline-item">
-    
-    <a class="resp-sharing-button__link d-block" href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2ffallcrescent.my.id%2fblog%2fwu-hf0x02%2f" target="_blank"
-      rel="noopener" aria-label="">
-      <div class="resp-sharing-button resp-sharing-button--facebook resp-sharing-button--small">
-        <div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
-          <i class="lab la-facebook-f text-dark"></i>
-        </div>
-      </div>
-    </a>
-  </li>
-
-  <li class="list-inline-item">
-    
-    <a class="resp-sharing-button__link d-block" href="https://twitter.com/intent/tweet/?text=Write%20up%20HackFest%200x02&amp;url=https%3a%2f%2ffallcrescent.my.id%2fblog%2fwu-hf0x02%2f"
-      target="_blank" rel="noopener" aria-label="">
-      <div class="resp-sharing-button resp-sharing-button--twitter resp-sharing-button--small">
-        <div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
-          <i class="lab la-twitter text-dark"></i>
-        </div>
-      </div>
-    </a>
-  </li>
-
-  <li class="list-inline-item">
-    
-    <a class="resp-sharing-button__link d-block" href="https://plus.google.com/share?url=https%3a%2f%2ffallcrescent.my.id%2fblog%2fwu-hf0x02%2f" target="_blank"
-      rel="noopener" aria-label="">
-      <div class="resp-sharing-button resp-sharing-button--google resp-sharing-button--small">
-        <div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
-          <i class="lab la-google-plus-g text-dark"></i>
-        </div>
-      </div>
-    </a>
-  </li>
-
-  <li class="list-inline-item">
-    
-    <a class="resp-sharing-button__link d-block" href="mailto:?subject=Write%20up%20HackFest%200x02&amp;body=https%3a%2f%2ffallcrescent.my.id%2fblog%2fwu-hf0x02%2f" target="_self"
-      rel="noopener" aria-label="">
-      <div class="resp-sharing-button resp-sharing-button--email resp-sharing-button--small">
-        <div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
-          <i class="las la-envelope text-dark"></i>
-        </div>
-      </div>
-    </a>
-  </li>
-
-  <li class="list-inline-item">
-    
-    <a class="resp-sharing-button__link d-block" href="whatsapp://send?text=Write%20up%20HackFest%200x02%20https%3a%2f%2ffallcrescent.my.id%2fblog%2fwu-hf0x02%2f" target="_blank"
-      rel="noopener" aria-label="">
-      <div class="resp-sharing-button resp-sharing-button--whatsapp resp-sharing-button--small">
-        <div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
-          <i class="lab la-whatsapp text-dark"></i>
-        </div>
-      </div>
-    </a>
-  </li>
-
-</ul></div>
-      </div>
-    </div>
-
-    <div class="single-post-author">
-      <div class="row justify-content-center">
-        <div class="col-lg-10">
-          <div class="media d-block d-sm-flex text-center text-sm-left">
-            
-            <a href="https://fallcrescent.my.id/author/kizbudin/"><img loading="lazy" class="img-fluid rounded-circle mr-0 mr-sm-4 mb-4" src="https://fallcrescent.my.id/images/author/author-3.png" alt="M. Kizbudin"></a>
-            <div class="media-body">
-              <p class="font-primary mb-1">Written By</p>
-              <h4><a href="https://fallcrescent.my.id/author/kizbudin/" class="text-dark font-weight-700">M. Kizbudin</a></h4>
-              <p class="font-primary">Hello i am M. Kizbudin. Computer science student, i blog about cyber security, ctf writeup , web development , and more about tech.</p>
-              <ul class="social-links list-unstyled list-inline ml-0 ml-sm-n2">
-                
-                <li class="list-inline-item"><a href="https://facebook.com/m.kizbudin1">
-                    <i class="lab la-facebook-f"></i>
-                  </a></li>
-                
-                <li class="list-inline-item"><a href="https://twitter.com/fallcrescent151">
-                    <i class="lab la-twitter"></i>
-                  </a></li>
-                
-                <li class="list-inline-item"><a href="https://linkedin.com/in/kizbudin">
-                    <i class="lab la-linkedin-in"></i>
-                  </a></li>
-                
-              </ul>
-            </div>
-            
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="single-post-similer">
-      <div class="row justify-content-center">
-        <div class="col-lg-10">
-          <div class="row mt-3">
-            <div class="col-12">
-              <h3 class="text-dark font-weight-800 mb-4 pb-2">You May Also Like</h3>
-            </div>
-            
-              
-            <div class="col-md-6">
-              <article class="card post-card">
-  
-  <a href="https://fallcrescent.my.id/blog/writeup-hf-2017/">
-    <img loading="lazy" class="w-100 rounded" src="https://fallcrescent.my.id/images/post/hf-ccug.png" alt="Writeup HackFest 2017">
-  </a>
-  
-  <div class="card-body">
-    <ul class="card-meta list-inline mb-2">
-      <li class="list-inline-item mb-2">
-        
-        <a href="https://fallcrescent.my.id/author/kizbudin/" class="card-meta-author">
-          
-          <img loading="lazy" src="https://fallcrescent.my.id/images/author/author-3.png" alt="M. Kizbudin">
-          
-          <span>M. Kizbudin</span>
-        </a>
-        
-      </li>
-      <li class="list-inline-item mb-2">
-        <span>11 Oct, 2018</span>
-      </li>
-      <li class="list-inline-item mb-2">
-        <ul class="card-meta-tag list-inline">
-          
-          <li class="list-inline-item"><a href="https://fallcrescent.my.idtags/ctf">CTF</a></li>
-          
-        </ul>
-      </li>
-    </ul>
-    <h3 class="mb-3">
-      <a class="post-title" href="https://fallcrescent.my.id/blog/writeup-hf-2017/">Writeup HackFest 2017</a>
-    </h3>
-    <p>Web Hacking 1. MR Robot Deskripsi Soal : Catch My Robot
+<span style=color:#66d9ef>if</span> __name__ <span style=color:#f92672>=</span><span style=color:#f92672>=</span> <span style=color:#e6db74>&#39;__main__&#39;</span>:
+ main<span style=color:#f92672>(</span><span style=color:#f92672>)</span>
+<span style=color:#75715e># okay decompiling ular_terbungkus.pyc</span>
+</code></pre></div><p>dari script diatas penulis hanya membenarkan penulisan script dengan menghapous bagian if dan input lalu menampilkan fungsi real_flag</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>main</span>():
+ <span style=color:#66d9ef>print</span> <span style=color:#e6db74></span><span style=color:#e6db74>&#39;</span><span style=color:#e6db74>----- Sarang Ular -----</span><span style=color:#e6db74>&#39;</span>
+ real_flag <span style=color:#f92672>=</span> Ular()<span style=color:#f92672>.</span>get_flag()
+ <span style=color:#66d9ef>print</span>(real_flag)
+</code></pre></div><p><strong>Flag : HackFest{88df7b7657844da585f1590c887bbaefdb2685c6}</strong></p></div></div></div><div class=single-post-meta><div class="row justify-content-center"><div class="col-lg-5 col-md-6 text-center text-md-left"><ul class="post-meta-tags list-unstyled list-inline"><li class=list-inline-item><a href=https://fallcrescent.my.id/tags/ctf>CTF</a></li></ul></div><div class="col-lg-5 col-md-6 text-center text-md-right mt-4 mt-md-0"><ul class="social-links has-bg-color list-unstyled list-inline" style=line-height:0><li class=list-inline-item><a class="resp-sharing-button__link d-block" href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2ffallcrescent.my.id%2fblog%2fwu-hf0x02%2f" target=_blank rel=noopener aria-label><div class="resp-sharing-button resp-sharing-button--facebook resp-sharing-button--small"><div aria-hidden=true class="resp-sharing-button__icon resp-sharing-button__icon--solid"><i class="lab la-facebook-f text-dark"></i></div></div></a></li><li class=list-inline-item><a class="resp-sharing-button__link d-block" href="https://twitter.com/intent/tweet/?text=Write%20up%20HackFest%200x02&url=https%3a%2f%2ffallcrescent.my.id%2fblog%2fwu-hf0x02%2f" target=_blank rel=noopener aria-label><div class="resp-sharing-button resp-sharing-button--twitter resp-sharing-button--small"><div aria-hidden=true class="resp-sharing-button__icon resp-sharing-button__icon--solid"><i class="lab la-twitter text-dark"></i></div></div></a></li><li class=list-inline-item><a class="resp-sharing-button__link d-block" href="https://plus.google.com/share?url=https%3a%2f%2ffallcrescent.my.id%2fblog%2fwu-hf0x02%2f" target=_blank rel=noopener aria-label><div class="resp-sharing-button resp-sharing-button--google resp-sharing-button--small"><div aria-hidden=true class="resp-sharing-button__icon resp-sharing-button__icon--solid"><i class="lab la-google-plus-g text-dark"></i></div></div></a></li><li class=list-inline-item><a class="resp-sharing-button__link d-block" href="mailto:?subject=Write%20up%20HackFest%200x02&body=https%3a%2f%2ffallcrescent.my.id%2fblog%2fwu-hf0x02%2f" target=_self rel=noopener aria-label><div class="resp-sharing-button resp-sharing-button--email resp-sharing-button--small"><div aria-hidden=true class="resp-sharing-button__icon resp-sharing-button__icon--solid"><i class="las la-envelope text-dark"></i></div></div></a></li><li class=list-inline-item><a class="resp-sharing-button__link d-block" href="whatsapp://send?text=Write%20up%20HackFest%200x02%20https%3a%2f%2ffallcrescent.my.id%2fblog%2fwu-hf0x02%2f" target=_blank rel=noopener aria-label><div class="resp-sharing-button resp-sharing-button--whatsapp resp-sharing-button--small"><div aria-hidden=true class="resp-sharing-button__icon resp-sharing-button__icon--solid"><i class="lab la-whatsapp text-dark"></i></div></div></a></li></ul></div></div></div><div class=single-post-author><div class="row justify-content-center"><div class=col-lg-10><div class="media d-block d-sm-flex text-center text-sm-left"><a href=https://fallcrescent.my.id/author/kizbudin/><img loading=lazy class="img-fluid rounded-circle mr-0 mr-sm-4 mb-4" src=https://fallcrescent.my.id/images/author/author-3.png alt="M. Kizbudin"></a><div class=media-body><p class="font-primary mb-1">Written By</p><h4><a href=https://fallcrescent.my.id/author/kizbudin/ class="text-dark font-weight-700">M. Kizbudin</a></h4><p class=font-primary>Hello i am M. Kizbudin. Computer science student, i blog about cyber security, ctf writeup , web development , and more about tech.</p><ul class="social-links list-unstyled list-inline ml-0 ml-sm-n2"><li class=list-inline-item><a href=https://facebook.com/m.kizbudin1><i class="lab la-facebook-f"></i></a></li><li class=list-inline-item><a href=https://twitter.com/fallcrescent151><i class="lab la-twitter"></i></a></li><li class=list-inline-item><a href=https://linkedin.com/in/kizbudin><i class="lab la-linkedin-in"></i></a></li></ul></div></div></div></div></div><div class=single-post-similer><div class="row justify-content-center"><div class=col-lg-10><div class="row mt-3"><div class=col-12><h3 class="text-dark font-weight-800 mb-4 pb-2">You May Also Like</h3></div><div class=col-md-6><article class="card post-card"><a href=https://fallcrescent.my.id/blog/writeup-hf-2017/><img loading=lazy class="w-100 rounded" src=https://fallcrescent.my.id/images/post/hf-ccug.png alt="Writeup HackFest 2017"></a><div class=card-body><ul class="card-meta list-inline mb-2"><li class="list-inline-item mb-2"><a href=https://fallcrescent.my.id/author/kizbudin/ class=card-meta-author><img loading=lazy src=https://fallcrescent.my.id/images/author/author-3.png alt="M. Kizbudin">
+<span>M. Kizbudin</span></a></li><li class="list-inline-item mb-2"><span>11 Oct, 2018</span></li><li class="list-inline-item mb-2"><ul class="card-meta-tag list-inline"><li class=list-inline-item><a href=https://fallcrescent.my.idtags/ctf>CTF</a></li></ul></li></ul><h3 class=mb-3><a class=post-title href=https://fallcrescent.my.id/blog/writeup-hf-2017/>Writeup HackFest 2017</a></h3><p>Web Hacking 1. MR Robot Deskripsi Soal : Catch My Robot
 Diberikan tampilan awal sebagai berikut
-Dari soal kita sudah bisa mengetahui kalau pada …</p>
-
-    
-  </div>
-</article>
-            </div>
-            
-            <div class="col-md-6">
-              <article class="card post-card">
-  
-  <a href="https://fallcrescent.my.id/blog/write-up-disko-ctf/">
-    <img loading="lazy" class="w-100 rounded" src="https://fallcrescent.my.id/images/post/disko-ctf/logo-kominfo.png" alt="Write up Disko CTF">
-  </a>
-  
-  <div class="card-body">
-    <ul class="card-meta list-inline mb-2">
-      <li class="list-inline-item mb-2">
-        
-        <a href="https://fallcrescent.my.id/author/kizbudin/" class="card-meta-author">
-          
-          <img loading="lazy" src="https://fallcrescent.my.id/images/author/author-3.png" alt="M. Kizbudin">
-          
-          <span>M. Kizbudin</span>
-        </a>
-        
-      </li>
-      <li class="list-inline-item mb-2">
-        <span>12 Aug, 2021</span>
-      </li>
-      <li class="list-inline-item mb-2">
-        <ul class="card-meta-tag list-inline">
-          
-          <li class="list-inline-item"><a href="https://fallcrescent.my.idtags/ctf">CTF</a></li>
-          
-        </ul>
-      </li>
-    </ul>
-    <h3 class="mb-3">
-      <a class="post-title" href="https://fallcrescent.my.id/blog/write-up-disko-ctf/">Write up Disko CTF</a>
-    </h3>
-    <p>Misc - Bonus Untuk soal kategori ini tidak perlu di jelaskan sudah ada jawabanya semua flag nya yaitu
-Bonus 1 : DiskoCTF{reborn_playing}
-Bonus 2 : …</p>
-
-    
-  </div>
-</article>
-            </div>
-            
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-
-
-  <footer class="section-sm">
-  <div class="container">
-    <div class="row justify-content-center align-items-center">
-      <div class="col-lg-5">
-        
-      </div>
-      <div class="col-lg-12 text-center mt-5">
-        <ul class="list-inline footer-menu mb-4">
-          
-          <li class="list-inline-item mx-3"><a href="https://fallcrescent.my.id/about/">About</a></li>
-          
-          <li class="list-inline-item mx-3"><a href="https://fallcrescent.my.id/author/">Authors</a></li>
-          
-        </ul>
-        <ul class="social-links icon-box list-unstyled list-inline font-weight-500 mb-3">
-          
-          <li class="list-inline-item text-center"><a href="https://www.facebook.com/m.kizbudin1" aria-label="social-icon">
-            <i class="lab lab la-facebook-f"></i>
-          </a></li>
-          
-          <li class="list-inline-item text-center"><a href="https://www.twitter.com/fallcrescent151" aria-label="social-icon">
-            <i class="lab lab la-twitter"></i>
-          </a></li>
-          
-          <li class="list-inline-item text-center"><a href="https://www.instagram.com/" aria-label="social-icon">
-            <i class="lab lab la-instagram"></i>
-          </a></li>
-          
-          <li class="list-inline-item text-center"><a href="https://www.linkedin.com/" aria-label="social-icon">
-            <i class="lab lab la-linkedin-in"></i>
-          </a></li>
-          
-        </ul>
-        
-        <p class="mb-0 font-weight-500 copyright-text content">Designed By <a href="https://gethugothemes.com/">Gethugothemes</a> &amp; Developed by <a href="https://fallcrescent.my.id">M. Kizbudin</a></p>
-        
-      </div>
-    </div>
-  </div>
-</footer>
-  
-
-
-
-
-  
-
-
-
-  
-
-
-
-  
-
-
-
-  
-
-
-
-  
-
-
-
-  
-
-
-
-
-<script data-turbolinks-suppress-warning src="/js/vendor.min.104c16bb588dd60f4bc0cbb9828dcf214eb0a6775f69f74f025b75dc5aac73eb47da26aef00c8f4e3d7a85099a8054c195d03d63aa88d1b4213a47274755994e.js" integrity="sha512-EEwWu1iN1g9LwMu5go3PIU6wpndfafdPAlt13Fqsc&#43;tH2iau8AyPTj16hQmagFTBldA9Y6qI0bQhOkcnR1WZTg=="></script>
-
-
-
-</body>
-
-</html>
+Dari soal kita sudah bisa mengetahui kalau pada …</p></div></article></div><div class=col-md-6><article class="card post-card"><a href=https://fallcrescent.my.id/blog/deploy-hugo-gh-act/><img loading=lazy class="w-100 rounded" src=https://fallcrescent.my.id/images/post/hugo+gh.png alt="Deploy Hugo ke Github dengan Menggunakan Github Action"></a><div class=card-body><ul class="card-meta list-inline mb-2"><li class="list-inline-item mb-2"><a href=https://fallcrescent.my.id/author/kizbudin/ class=card-meta-author><img loading=lazy src=https://fallcrescent.my.id/images/author/author-3.png alt="M. Kizbudin">
+<span>M. Kizbudin</span></a></li><li class="list-inline-item mb-2"><span>14 Aug, 2021</span></li><li class="list-inline-item mb-2"><ul class="card-meta-tag list-inline"><li class=list-inline-item><a href=https://fallcrescent.my.idtags/hugo>Hugo</a></li><li class=list-inline-item><a href=https://fallcrescent.my.idtags/github-action>Github Action</a></li></ul></li></ul><h3 class=mb-3><a class=post-title href=https://fallcrescent.my.id/blog/deploy-hugo-gh-act/>Deploy Hugo ke Github dengan Menggunakan Github Action</a></h3><p>Apa itu Github Action? Sederhananya Github Actions adalah alat otomasi (CI/CD) yang hadir di Github, Alat ini sangat membantu kita untuk membuat …</p></div></article></div></div></div></div></div></div></section><footer class=section-sm><div class=container><div class="row justify-content-center align-items-center"><div class=col-lg-5></div><div class="col-lg-12 text-center mt-5"><ul class="list-inline footer-menu mb-4"><li class="list-inline-item mx-3"><a href=https://fallcrescent.my.id/about/>About</a></li><li class="list-inline-item mx-3"><a href=https://fallcrescent.my.id/author/>Authors</a></li></ul><ul class="social-links icon-box list-unstyled list-inline font-weight-500 mb-3"><li class="list-inline-item text-center"><a href=https://www.facebook.com/m.kizbudin1 aria-label=social-icon><i class="lab lab la-facebook-f"></i></a></li><li class="list-inline-item text-center"><a href=https://www.twitter.com/fallcrescent151 aria-label=social-icon><i class="lab lab la-twitter"></i></a></li><li class="list-inline-item text-center"><a href=https://www.instagram.com/ aria-label=social-icon><i class="lab lab la-instagram"></i></a></li><li class="list-inline-item text-center"><a href=https://www.linkedin.com/ aria-label=social-icon><i class="lab lab la-linkedin-in"></i></a></li></ul><p class="mb-0 font-weight-500 copyright-text content">Designed By <a href=https://gethugothemes.com/>Gethugothemes</a> & Developed by <a href=https://fallcrescent.my.id>M. Kizbudin</a></p></div></div></div></footer><script data-turbolinks-suppress-warning src=/js/vendor.min.145a21dc1d3b6180ba4053b597f77d01206a5207dbc280de83d4151958109b94fad45e42ce423c4c4cf0cef270a67279b4db5d19f05e3eee33b3838de0028318.js integrity="sha512-FFoh3B07YYC6QFO1l/d9ASBqUgfbwoDeg9QVGVgQm5T61F5CzkI8TEzwzvJwpnJ5tNtdGfBePu4zs4ON4AKDGA=="></script></body></html>
